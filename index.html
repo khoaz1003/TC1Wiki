@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sử Ký Toàn Thư TC1 - TC1Wiki</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" type="image/png" href="small.png">
+    <style>
+        body { 
+            font-family: 'Calibri', 'Segoe UI', Candara, Arial, sans-serif; 
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: #202122; 
+        }
+        .wiki-container { 
+            background: white; 
+            border: 1px dotted #a2a9b1; 
+            padding: 40px; 
+            margin-top: 20px; 
+            border-radius: 8px;
+            line-height: 1.6;
+        }
+        .infobox { 
+            width: 320px; 
+            border: 1px solid #c8ccd1; 
+            background-color: #f8f9fa; 
+            float: right; 
+            margin-left: 20px; 
+            padding: 5px;
+            font-size: 0.9rem;
+        }
+        h1, h2, h3 { 
+            font-family: 'Calibri', sans-serif; 
+            border-bottom: 1px solid #a2a9b1; 
+            font-weight: bold;
+            color: #1a202c;
+        }
+        .search-highlight { background-color: yellow; font-weight: bold; }
+        
+        /* Base Button Style */
+        .khac-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 15px;
+            padding: 10px 25px;
+            color: white !important;
+            border-radius: 50px;
+            font-weight: bold;
+            text-decoration: none !important;
+            transition: 0.3s;
+        }
+        .khac-btn:hover { transform: translateX(5px); opacity: 0.9; }
+        
+        /* Custom Button Colors to match sub-pages */
+        .btn-coinguon { background-color: #ed8936; } /* Orange-ish */
+        .btn-nhahien { background-color: #2f855a; }  /* Green-ish */
+        .btn-nhatai { background-color: #3366cc; }   /* Blue-ish */
+        .btn-diadiem { background-color: #718096; }  /* Grey-ish */
+    </style>
+</head>
+<body class="p-4 md:p-8">
+
+    <div class="max-w-5xl mx-auto mb-6 flex gap-2">
+        <input id="search-input" type="text" placeholder="Tìm kiếm (Cá sấu, Sẹo, Trọng Khương,v.v...)" 
+               class="flex-1 p-3 border rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 outline-none">
+        <button onclick="searchWiki()" class="bg-[#3366cc] text-white px-6 py-2 rounded-lg font-bold hover:bg-blue-700 transition">Tìm</button>
+    </div>
+
+    <div class="max-w-5xl mx-auto wiki-container shadow-md" id="wiki-content">
+        <h1 class="text-4xl mb-4 text-black">Sử ký Toàn thư TC1 - TC1Wiki</h1>
+        
+        <p class="mb-6 italic text-gray-500">"Kinh sử này ta chép cho hậu thế, để về sau còn nhớ lấy tiền thân..."</p>
+
+        <aside class="infobox rounded shadow-sm">
+            <div class="text-center font-bold text-xl bg-[#eaecf0] p-2 mb-2 border-b">VƯƠNG TRIỀU TC1</div>
+            <div class="p-2 text-sm">
+                <table class="w-full text-left">
+                    <tr class="border-b"> <th class="py-1">Hoàng đế:</th> <td>Phạm Ngọc Tài</td> </tr>
+                    <tr class="border-b"> <th class="py-1">Kinh đô:</th> <td>Hữu Thọ Sơn (Tầng 2)</td> </tr>
+                    <tr class="border-b"> <th class="py-1">Quốc sư:</th> <td>Ngô Thừa Khang</td> </tr>
+                    <tr class="border-b"> <th class="py-1">Binh lực:</th> <td>Sĩ tử xuất sắc</td> </tr>
+                    <tr class="border-b"> <th class="py-1">Hoàng đế hiện thời:</th><td>Phạm Ngọc Tài</td></tr>
+                </table>
+            </div>  
+        </aside>
+
+        <div class="bg-[#f8f9fa] border p-5 mb-8 inline-block rounded-md">
+            <h3 class="font-bold mb-3 border-b pb-1 text-blue-800">Mục lục nội dung</h3>
+            <ul class="space-y-2 text-blue-600">
+                <li>1. <a href="#khac-1" class="hover:underline font-bold">I. Cội nguồn của mọi sự</a></li>
+                <li>2. <a href="#dia-ly" class="hover:underline font-bold">II. Địa lý - Kinh đô</a></li>
+                <li>3. <a href="#khac-2" class="hover:underline font-bold">III. Thời đại Nhà Hiền</a></li>
+                <li>4. <a href="#khac-3" class="hover:underline font-bold">IV. Triều đại Nhà Tài</a></li>
+                <li>5. <a href="#nhan-vat" class="hover:underline font-bold">Danh sách anh hùng TC1</a></li>
+            </ul>
+        </div>
+
+        <h2 id="khac-1" class="text-2xl mb-4 mt-8">I. Cội nguồn của mọi sự</h2>
+        <div class="space-y-4 text-justify">
+            <p>Thuở ban sơ, khi vạn vật còn là hư vô, <b>Ông Cội</b> đã xuất hiện. Ngài dùng lửa và đất sét để nặn ra Nhật, Nguyệt và Địa Cầu. Đây là thời kỳ của những vị thần đầu tiên, đặt nền móng cho vùng đất Hữu Thọ Sơn.</p>
+            <p>Ngọn lửa khởi nguyên không chỉ mang lại ánh sáng mà còn ban tặng trí tuệ cho các cư dân đầu tiên, hình thành nên dòng máu TC1 kiêu hãnh.</p>
+            <a href="modau.html" class="khac-btn btn-coinguon">Xem chi tiết Cội nguồn ➔</a>
+        </div>
+
+        <h2 id="dia-ly" class="text-2xl mb-4 mt-12">II. Địa lý - Kinh đô</h2>
+        <div class="space-y-4 text-justify">
+            <p>Vương quốc TC1 tọa lạc tại vùng đất linh thiêng <b>Hữu Thọ Sơn</b>. Lãnh thổ bao gồm các tầng cao thấp khác nhau, nơi giao thoa giữa các triều đại. Phía Tây giáp các tửu quán sầm uất, nơi diễn ra những sự kiện lịch sử quan trọng.</p>
+            <p>Địa hình đa dạng với núi cao, đồng bằng và cả những bồn địa khô cằn vốn là di tích của Hồ Thiêng từ thời khởi thủy.</p>
+            <a href="dlkd.html" class="khac-btn btn-diadiem">Xem bản đồ địa lý ➔</a>
+        </div>
+
+        <h2 id="khac-2" class="text-2xl mb-4 mt-12">III. Thời đại Nhà Hiền (Kỷ nguyên khởi nguyên)</h2>
+        <div class="space-y-4 text-justify">
+            <p>Nước TC1 được khai quốc bởi Hoàng đế Hiền Champa, đóng đô tại Hữu Thọ Sơn, lấy quốc hiệu là 6TC1. Trong giai đoạn này Cát Tiên được bầu làm đại thần. Quốc Anh và Thảo Vy được làm quan văn và quan võ. Thời kỳ này xuất hiện nhiều nhân vật kiệt xuất.</p>
+            <p>Nổi bật nhất là Trọng Khương, người được hậu thế mệnh danh là Lương Thế Vinh của TC1. Ông nổi tiếng với khả năng học đâu hiểu đó. Bên cạnh đó cũng không thể không nhắc tới hai nhà sử quán khác cha khác mẹ là Ngô Thừa Hiếu và Ngô Thừa Khang và 2 đệ tử Khoa, Trí.</p>
+            <p>Nhiều cư dân từ Nguyễn Thị Thập Sơn di cư tới như Bách Tùng, Đạt, Gia Huy… Dân số thời kỳ này dao động khoảng 35–45 người. Bằng chứng khảo cổ duy nhất của TC1 là cái quốc hiệu này.</p>
+            
+            <h3 class="text-xl mt-6">Các vụ án và sự việc tiêu biểu:</h3>
+            <p><b>1. Vụ án Bản kiểm điểm kinh điển:</b> Ghi chép về cuộc tranh chấp "Cá lóc" giữa <b>Khoa</b> và <b>Khánh</b>. Sự việc căng thẳng đến mức cả hai đều phải nhận Bản kiểm điểm từ hoàng đế.</p>
+            <p><b>2. Đại chiến Cá Sấu 3 Chân:</b> Tại Hồ Thiêng, quái vật Cá sấu 3 chân xuất hiện. Dũng sĩ <b>Ngô Hiếu</b> đã tiêu diệt quái vật, bảo vệ sự bình yên cho nhân dân.</p>
+            <a href="thoinhaHien.html" class="khac-btn btn-nhahien">Xem chi tiết Nhà Hiền ➔</a>
+        </div>
+
+        <h2 id="khac-3" class="text-2xl mb-4 mt-12">IV. Triều đại Nhà Tài (Vương triều hưng thịnh)</h2>
+        <div class="space-y-4 text-justify">
+            <p>Hoàng đế <b>Phạm Ngọc Tài</b> lên ngôi, thiết lập kinh đô tại tầng 2 Hữu Thọ Sơn. Đây là giai đoạn phát triển rực rỡ nhất về cả văn hóa và võ công.</p>
+            <h3 class="text-xl mt-6">Chính sách mới tiêu biểu:</h3>
+            <p><b>1. Hệ thống "Sẹo" và Pháp luật:</b> Triều đình quản lý bằng kỷ cương thép: 3 tội nhẹ (nói chuyện, làm việc riêng) quy đổi thành 1 Sẹo. Tích lũy 4 Sẹo sẽ đối mặt với <b>Bản kiểm điểm</b>. Cách xóa sẹo: phát biểu 3 lần trước triều đình.</p>
+            <a href="thoinhaTai.html" class="khac-btn btn-nhatai">Xem chi tiết Nhà Tài ➔</a>
+        </div>
+
+        <h2 id="nhan-vat" class="text-2xl mb-4 mt-12">Danh sách anh hùng TC1</h2>
+        <ul class="list-disc ml-6 space-y-2 mb-10">
+            <li><b>Phạm Ngọc Tài:</b> Hoàng đế anh minh.</li>
+            <li><b>Yến Phương:</b> (Đại thần) Người chịu trách nhiệm và điều hành cả vương quốc.</li>
+            <li><b>Trọng Khương:</b> Bậc trí giả thông thái (Chân mạng thiên tử).</li>
+            <li><b>Quốc Anh:</b> Quan văn liêm khiết.</li>
+            <li><b>Thảo Vy:</b> Quan võ và là người đứng ra dẹp loạn tứ sứ quân phân tranh, giữ vững triều cương.</li>
+        </ul>
+
+        <footer class="mt-12 pt-8 border-t border-gray-300 text-sm text-gray-500">
+            <div class="mb-8 flex justify-center">
+                <a href="riel.html" class="group flex items-center gap-3 bg-white border border-blue-500 px-6 py-3 rounded-full text-blue-600 font-bold hover:bg-blue-500 hover:text-white transition-all shadow-sm">
+                    <span>Xem và tải về tài liệu gốc =></span>
+                </a>
+            </div>
+            <div class="flex justify-between items-center border-t pt-6">
+                <p>Cập nhật lần cuối: 19 tháng 4, 2026 lúc 12:27PM</p>
+                <img src="big.png" class="h-8 opacity-70">
+            </div>
+                            <p>Phiên bản Website: v1 early public test</p>
+                            <p>--------------------     </p>
+
+                            <p>Website hiện vẫn đang trong giai đoạn phát triển và có thể thiếu sót, nếu phát hiện lỗi hoặc sai sót, mong các vị thông cảm và phản hồi về cho ban biên soạn để được sửa đổi sớm nhất. Xin cảm ơn quý vị rất nhiều.</p>
+                            <p>Xin chân thành cảm ơn sự hỗ trợ của <a href="author.html" class="text-blue-600 hover:underline font-bold">ban biên tập</a></p>
+                            <p>Tham gia <a href="https://discord.gg/xGRsHRgnVn" class="text-blue-600 hover:underline font-bold">Nhóm Discord</a> của TC1Wiki để trò chuyện, báo lỗi cho đội ngũ Dev để sửa lỗi sớm nhất</p>
+                            <p>Và một lần nữa, xin chân thành cảm ơn sự đồng hành và hỗ trợ của quý vị đã truyền động lực giúp đội ngũ lập lên trang web này! </p>
+        </footer>
+        </footer>
+    </div>
+
+    <script>
+        function searchWiki() {
+            const input = document.getElementById('search-input').value.toLowerCase();
+            const content = document.getElementById('wiki-content');
+            const paragraphs = content.querySelectorAll('p, li, td, h2, h3, b');
+            paragraphs.forEach(p => p.innerHTML = p.innerHTML.replace(/<span class="search-highlight">|<\/span>/g, ""));
+            if (input === "") return;
+            let found = false;
+            paragraphs.forEach(p => {
+                if (p.innerText.toLowerCase().includes(input)) {
+                    const regex = new RegExp(`(${input})`, 'gi');
+                    p.innerHTML = p.innerHTML.replace(regex, '<span class="search-highlight">$1</span>');
+                    if (!found) { p.scrollIntoView({ behavior: 'smooth', block: 'center' }); found = true; }
+                }
+            });
+        }
+        document.getElementById('search-input').addEventListener('keypress', (e) => { if (e.key === 'Enter') searchWiki(); });
+    </script>
+</body>
+</html>
+
+
+<!-- Design and Coded by @khoaz1003 -->
+<!-- github.com/@khoaz1003 -->
+
