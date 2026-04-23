@@ -13,6 +13,7 @@
             color: #202122; 
             line-height: 1.8;
             min-height: 100vh;
+            transition: background 0.5s ease;
         }
         .wiki-container { 
             background: white; 
@@ -22,71 +23,63 @@
             max-width: 1000px;
             border-radius: 12px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: all 0.5s ease;
         }
         h1 { 
             border-bottom: 2px solid #718096; 
             font-weight: bold; 
-            color: #2d3748;
             padding-bottom: 10px;
             margin-top: 40px;
             text-transform: uppercase;
             letter-spacing: 1px;
         }
-        h2 { 
-            border-bottom: 1px solid #a2a9b1; 
-            font-weight: bold; 
-            color: #4a5568;
-            margin-top: 35px;
-            margin-bottom: 20px;
-            padding-bottom: 5px;
-        }
-        h3 {
-            font-weight: bold;
-            color: #2d3748;
-            margin-top: 20px;
-            font-size: 1.2rem;
-        }
-        .content-section { 
-            margin-bottom: 40px; 
-            text-align: justify; 
-        }
-        .back-link { 
-            color: #718096; 
-            text-decoration: none; 
-            font-weight: bold; 
-            display: inline-flex; 
-            align-items: center;
-            margin-bottom: 30px; 
-            transition: 0.3s;
-        }
-        .back-link:hover { transform: translateX(-5px); color: #2d3748; }
+        h2, h3 { font-weight: bold; margin-top: 20px; }
+        h3 { font-size: 1.2rem; }
         
-        .infobox-geo {
-            float: right;
-            width: 300px;
-            background: #f8f9fa;
-            border: 1px solid #a2a9b1;
-            padding: 15px;
-            margin-left: 20px;
-            border-radius: 8px;
-            font-size: 0.9rem;
-        }
-        .highlight-geo {
-            color: #2b6cb0;
-            font-weight: bold;
-        }
+        .content-section { margin-bottom: 40px; text-align: justify; }
+        .back-link { color: #f6ad55; text-decoration: none; font-weight: bold; display: inline-flex; align-items: center; margin-bottom: 30px; transition: 0.3s; }
+        
         .myth-note {
-            background: #fffaf0;
+            background: rgba(255, 250, 240, 0.1);
             border-left: 4px solid #ed8936;
             padding: 15px;
             margin: 20px 0;
             font-style: italic;
         }
+
+        .divine-quote {
+            font-family: 'Times New Roman', serif;
+            font-style: italic;
+            font-size: 1.25rem;
+            text-align: center;
+            margin: 30px auto;
+            padding: 25px;
+            width: fit-content;
+            max-width: 80%;
+            border-top: 2px double rgba(237, 137, 54, 0.4);
+            border-bottom: 2px double rgba(237, 137, 54, 0.4);
+            background: rgba(237, 137, 54, 0.05);
+            transition: all 0.5s ease;
+        }
+
+        /* Nút bánh răng */
+        .animate-spin-slow { animation: spin 8s linear infinite; }
+        @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+        /* Switch */
+        .switch { position: relative; display: inline-block; width: 44px; height: 22px; }
+        .switch input { opacity: 0; width: 0; height: 0; }
+        .slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #444; transition: .4s; border-radius: 20px; }
+        .slider:before { position: absolute; content: ""; height: 16px; width: 16px; left: 3px; bottom: 3px; background-color: white; transition: .4s; border-radius: 50%; }
+        input:checked + .slider { background-color: #2563eb; }
+        input:checked + .slider:before { transform: translateX(22px); }
+
+        .highlight-geo { color: #2b6cb0; font-weight: bold; }
     </style>
 </head>
 <body class="p-4 md:p-10">
 
-    <div class="wiki-container">
+    <div class="wiki-container" id="main-content">
         <a href="index.html" class="back-link">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
@@ -94,8 +87,7 @@
             Quay lại trang chủ
         </a>
 
-    
-        <h1 class="text-3xl mb-8">1. ĐỊA LÝ – KINH ĐÔ</h1>
+        <h1 class="text-3xl mb-8" id="title-h1">1. ĐỊA LÝ – KINH ĐÔ</h1>
         <div class="content-section">
             <p>Kinh đô TC1 tọa lạc tại <b>Thiên Cung tầng thứ hai</b>, trên dãy <span class="highlight-geo">Hữu Thọ Sơn</span> – một vùng đất được xem là đắc địa hiếm có. Kinh thành được dựng phía trước một đại thụ cổ thụ, ở nơi cao ráo, thoáng đãng, khí hậu ôn hòa.</p>
             
@@ -106,6 +98,10 @@
                 <li><b>Điểm bất lợi:</b> Nguồn nước khan hiếm. Toàn vùng chỉ có một chiếc giếng nằm gần kinh đô, dân gian gọi là <b>“Giếng Thần”</b> (hay theo cách nói hiện nay là máy lọc nước).</li>
             </ul>
 
+            <div class="divine-quote">
+                “nhìn cái chỗ đó mà lòng ta ứa gan”
+            </div>
+
             <div class="myth-note">
                 Xưa, Hữu thọ sơn có một cái hồ gọi là <b>Hồ thiêng</b>, vì do trời ban tặng, vậy mà không biết bằng cách nào nước trong cái hồ đó bị rút cạn, trở thành cái bồn địa trống không. Do vậy nên người ta mới có truyền thuyết về “Thất khổng lồ”.
             </div>
@@ -113,64 +109,119 @@
 
         <h1 class="text-3xl mb-8">2. SINH VẬT</h1>
         <div class="content-section">
-            <p>Hữu Thọ Sơn là vùng đất có hệ sinh thái phong phú. Động vật nơi đây gồm:</p>
-            <ul class="list-disc ml-8 mt-2">
-                <li><b>Các loài địa sinh:</b> kiến, nhện.</li>
-                <li><b>Các loài phi sinh:</b> chim sẻ, ong, ruồi và bồ câu,...</li>
-                <li><b>Các loài thủy sinh:</b> cá bảy màu,…</li>
-            </ul>
+            <p>Hữu Thọ Sơn là vùng đất có hệ sinh thái phong phú. Động vật nơi đây gồm: <b>kiến, nhện, chim sẻ, ong, cá bảy màu...</b></p>
         </div>
 
         <h1 class="text-3xl mb-8">3. CON NGƯỜI</h1>
         <div class="content-section">
-            <p>Theo nhà sử quán Ngô Thừa Hiếu, người TC1 hầu hết là hậu duệ từ <b>Tiểu học</b> (Thế Vinh sơn, Huy Thực sơn, Quy sơn,…) di cư sang. Một vài gia tộc từ Thị Thập sơn qua, lập nên các nước tc2, tc3, i1… và TC1 chúng ta.</p>
-            <p class="mt-4">Người dân thuộc chủng <b>Mongoloid</b> (da vàng). Tùy vào môi trường làm việc mà nước da có thể ngăm đen hoặc trắng vàng như màu giấy ngả vàng. Đặc biệt có nhóm <b>Phù Đổng</b>: thân hình to lớn, sức khỏe phi thường, là lý do khiến các nước khác không dám tấn công TC1.</p>
-
-            <h3 class="text-xl mt-6">Triết học “Song Hiếu, Song Tâm”:</h3>
-            <ul class="list-disc ml-8 mt-2 grid grid-cols-2 gap-2">
-                <li><b>Hiếu học:</b> Coi trọng tri thức.</li>
-                <li><b>Hiếu thảo:</b> Trân trọng đấng sinh thành.</li>
-                <li><b>Tâm đức:</b> Lòng tốt, nhân hậu.</li>
-                <li><b>Tâm phúc:</b> Hành động thiện lành.</li>
-            </ul>
-            <p class="mt-4 italic">“Phong ba bão táp không bằng chữ nháp thầy Bảo” - Chữ của Lão Bảo đẹp tới mức không ai đọc được, trừ người mù.</p>
-        </div>
-
-        <h1 class="text-3xl mb-8">4. CÁC CUỘC PHÁT KIẾN ĐỊA LÝ</h1>
-        <div class="content-section">
-            <h3 class="text-xl">Sự tìm kiếm đế quốc “Nam Thổ”</h3>
-            <p>Nhà thám hiểm <b>Trí họ Ngô</b> và cánh tay phải <b>Nam</b> đã lên kế hoạch viễn du 2 vạn dặm để tìm đế quốc “Nam Thổ” của nhóm “Cửu nhân” (Khối 9) nhằm trao đổi sắt – kim loại của trời.</p>
-            <p class="mt-2">Do đi nhầm theo thư cổ, họ lạc sang Tây Lĩnh và mất 16 tháng ròng mới trở về. Ngoài ra còn khoảng 4 cuộc phát kiến khác gọi chung là các cuộc <b>“ngoại khóa”</b>.</p>
-        </div>
-
-        <h1 class="text-3xl mb-8">5. VĂN HÓA</h1>
-        <div class="content-section">
-            <div class="grid md:grid-cols-2 gap-8">
-                <div>
-                    <h3 class="text-lg">Nghệ thuật</h3>
-                    <p><b>Âm nhạc:</b> Nổi tiếng với đàn <b>Melodica</b> (ai cũng có 1 cây). Nghệ sĩ tiêu biểu: Phúc Lâm, Cát Tiên, Dương Minh Trí.</p>
-                    <p><b>Hội họa:</b> Rất thịnh hành. Họa sĩ nổi tiếng: Bảo Nam, Yến Phương, Khánh An.</p>
-                </div>
-                <div>
-                    <h3 class="text-lg">Xã hội & Quân đội</h3>
-                    <p><b>Phân tầng:</b> Chính trị -> Chân mạng thiên tử -> Cán bộ -> Thường dân.</p>
-                    <p><b>Quân đội:</b> Không riêng biệt, dân được huấn luyện sơ qua. Chế độ Quân chủ chuyên chế.</p>
-                </div>
-            </div>
-
-            <h3 class="text-xl mt-8">Trang phục truyền thống: Đông Thọ Phục</h3>
-            <p>Gồm <b>áo sơ mi trắng, quần/váy màu be.</b> Điểm nhấn là <b>chiếc khăn đỏ máu</b> ngay cổ áo ghi chữ “THCS Hữu Thọ Sơn”, được hoàng đế trao tặng khi gia nhập Đội.</p>
-            
-            <h3 class="text-xl mt-8">Đời sống hàng ngày</h3>
-            <p>Xưa bện cỏ làm giường, da thú làm áo, dùng đá bén làm rìu. Ngư dân có tục <b>vẽ hai con mắt lên mũi thuyền</b> để đánh lừa cá sấu, tránh bị lật thuyền trên Hồ Thiêng.</p>
+            <p>Theo nhà sử quán Ngô Thừa Hiếu, người TC1 hầu hết là hậu duệ từ <b>Tiểu học</b> di cư sang. Người dân thuộc chủng <b>Mongoloid</b>. Đặc biệt có nhóm <b>Phù Đổng</b> thân hình to lớn.</p>
+            <p class="mt-4 italic">“Phong ba bão táp không bằng chữ nháp thầy Bảo”</p>
         </div>
 
         <footer class="mt-12 pt-8 border-t border-gray-300 text-sm text-gray-500 flex justify-between">
             <p>© 2026 Sử Ký TC1 - Biên soạn bởi Ngô Thừa Khang</p>
-            <p>Lớp 7TC1 - Hữu Thọ Sơn | Chỉnh sửa lần cuối 18/4/2026 9:04PM</p>
+            <p>Lớp 7TC1 - Hữu Thọ Sơn | Chỉnh sửa lần cuối 22/4/2026 lúc 9:42PM</p>
         </footer>
     </div>
 
+    <div id="settings-trigger" class="fixed bottom-8 right-8 z-[100] group flex items-center bg-blue-600 p-3 rounded-full cursor-pointer shadow-lg hover:pr-6 transition-all duration-300" onclick="toggleSettingsMenu()">
+        <svg class="text-white animate-spin-slow" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+        <span class="max-w-0 overflow-hidden group-hover:max-w-xs group-hover:ml-3 text-white font-bold transition-all duration-500 whitespace-nowrap text-sm">Cài đặt giao diện</span>
+    </div>
+
+    <div id="settings-panel" class="fixed bottom-24 right-8 z-[100] bg-[#1a1a1a] p-6 rounded-3xl shadow-2xl border border-gray-700 hidden flex-col gap-6 min-w-[280px]">
+        <div class="grid grid-cols-4 gap-3 border-b border-gray-800 pb-6">
+            <button onclick="changeBg('#fff9db')" class="w-10 h-10 rounded-xl bg-[#fff9db] border-2 border-transparent hover:border-white transition-all shadow-lg"></button>
+            <button onclick="changeBg('#ffffff')" class="w-10 h-10 rounded-xl bg-[#ffffff] border-2 border-transparent hover:border-gray-400 transition-all shadow-lg"></button>
+            <button onclick="changeBg('#000000')" class="w-10 h-10 rounded-xl bg-[#000000] border-2 border-transparent hover:border-gray-500 transition-all shadow-lg"></button>
+            <button onclick="changeBg('#ebf8ff')" class="w-10 h-10 rounded-xl bg-[#ebf8ff] border-2 border-transparent hover:border-blue-400 transition-all shadow-lg"></button>
+        </div>
+        <div class="flex items-center justify-between">
+            <span class="text-white text-[11px] font-bold uppercase tracking-wider">Chế độ Gradient</span>
+            <label class="switch">
+                <input type="checkbox" id="gradient-toggle" onclick="toggleGradient()">
+                <span class="slider"></span>
+            </label>
+        </div>
+    </div>
+
+<script>
+    let currentBaseColor = localStorage.getItem('tc1_bg_choice') || '#ffffff';
+    let isGradient = localStorage.getItem('tc1_gradient') === 'true';
+
+    function toggleSettingsMenu() {
+        const panel = document.getElementById('settings-panel');
+        panel.classList.toggle('hidden');
+        panel.classList.toggle('flex');
+    }
+
+    function changeBg(color) {
+        currentBaseColor = color;
+        localStorage.setItem('tc1_bg_choice', color);
+        applyTheme();
+    }
+
+    function toggleGradient() {
+        isGradient = document.getElementById('gradient-toggle').checked;
+        localStorage.setItem('tc1_gradient', isGradient);
+        applyTheme();
+    }
+
+    function applyTheme() {
+        const body = document.body;
+        const container = document.getElementById('main-content');
+        const toggle = document.getElementById('gradient-toggle');
+        if (toggle) toggle.checked = isGradient;
+
+        const gradients = {
+            '#000000': 'linear-gradient(135deg, #000000 0%, #2d3748 100%)',
+            '#ebf8ff': 'linear-gradient(135deg, #2c5282 0%, #90cdf4 100%)',
+            '#fff9db': 'linear-gradient(135deg, #f6ad55 0%, #fff9db 100%)',
+            '#ffffff': 'linear-gradient(135deg, #e2e8f0 0%, #ffffff 100%)'
+        };
+
+        if (isGradient) {
+            body.style.setProperty('background', gradients[currentBaseColor] || currentBaseColor, 'important');
+        } else {
+            body.style.setProperty('background', currentBaseColor, 'important');
+        }
+
+        const isDark = (currentBaseColor === '#000000' || (isGradient && currentBaseColor === '#ebf8ff'));
+        const textColor = isDark ? '#ffffff' : '#1a202c';
+
+        if (isDark) {
+            container.style.backgroundColor = 'rgba(255, 255, 255, 0.05)';
+            container.style.borderColor = 'rgba(255, 255, 255, 0.1)';
+        } else {
+            container.style.backgroundColor = 'white';
+            container.style.borderColor = '#a2a9b1';
+        }
+
+        // FIX Ở ĐÂY: Thêm thẻ 'b' vào danh sách đổi màu
+document.querySelectorAll('h1, h2, h3, p, li, b, span, div, td, th, .divine-quote, .myth-note').forEach(el => {
+    el.style.setProperty('color', textColor, 'important');
+    
+    // Nếu là đoạn trích dẫn (divine-quote), có thể cho màu vàng nhạt khi ở nền tối cho đẹp
+    if(el.classList.contains('divine-quote') && isDark) {
+        el.style.setProperty('color', '#fbd38d', 'important');
+    }
+});
+        
+        const titleH1 = document.getElementById('title-h1');
+        if (titleH1) titleH1.style.color = isDark ? '#f6ad55' : '#2d3748';
+    }
+
+    window.onclick = function(event) {
+        const panel = document.getElementById('settings-panel');
+        const trigger = document.getElementById('settings-trigger');
+        if (panel && !panel.classList.contains('hidden') && !panel.contains(event.target) && !trigger.contains(event.target)) {
+            panel.classList.add('hidden');
+            panel.classList.remove('flex');
+        }
+    }
+
+    window.onload = applyTheme;
+</script>
 </body>
 </html>
 

@@ -9,10 +9,10 @@
     <style>
         body { 
             font-family: 'Calibri', 'Segoe UI', Candara, Arial, sans-serif; 
-            background: linear-gradient(135deg, #d4fc79 0%, #96e6a1 100%);
             color: #202122; 
             line-height: 1.8;
             min-height: 100vh;
+            transition: background 0.5s ease;
         }
         .wiki-container { 
             background: white; 
@@ -22,6 +22,10 @@
             max-width: 950px;
             border-radius: 12px;
             box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            /* Thêm hiệu ứng backdrop-filter để làm mờ nền phía sau khung (kính mờ) */
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
         }
         h1 { 
             border-bottom: 2px solid #2f855a; 
@@ -62,6 +66,7 @@
             margin: 20px 0;
             font-style: italic;
             border-radius: 0 8px 8px 0;
+            transition: background 0.5s ease;
         }
         .note-box {
             background: #fff9db;
@@ -71,16 +76,28 @@
             display: inline-block;
             font-weight: bold;
             margin: 10px 0;
+            transition: background 0.5s ease, color 0.5s ease;
         }
         .highlight-text {
             color: #c53030;
             font-weight: bold;
         }
+        h3 { font-size: 1.2rem; font-weight: bold; margin-top: 20px; }
+    <!--intesting-->
+        .animate-spin-slow { animation: spin 8s linear infinite; }
+        @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+        .switch { position: relative; display: inline-block; width: 44px; height: 22px; }
+        .switch input { opacity: 0; width: 0; height: 0; }
+        .slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #444; transition: .4s; border-radius: 20px; }
+        .slider:before { position: absolute; content: ""; height: 16px; width: 16px; left: 3px; bottom: 3px; background-color: white; transition: .4s; border-radius: 50%; }
+        input:checked + .slider { background-color: #2563eb; }
+        input:checked + .slider:before { transform: translateX(22px); }
     </style>
 </head>
 <body class="p-4 md:p-10">
 
-    <div class="wiki-container">
+    <div class="wiki-container" id="main-content">
         <a href="index.html" class="back-link">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
@@ -97,7 +114,7 @@
 
             <p class="mt-4">Bây giờ, nhiều cư dân từ Nguyễn Thị Thập Sơn di cư tới như Bách Tùng, Đạt, Gia Huy… Theo ước tính của các nhà khảo cổ, dân số thời kỳ này dao động khoảng 35–45 người. Bằng chứng khảo cổ duy nhất của TC1 là cái quốc hiệu này. Theo sử quán Ngô Thừa Khang thì đây rất có thể là quốc hiệu chính thức của TC1 thời nhà Hiền.</p>
             
-            <div class="note-box">Hiện không có quá nhiều thông tin về thời kì này. Nguyên do là vì lúc này người dân lo làm ăn kiếm sống chứ chả có ai đi viết sử thư cả.</div>
+            <div class="note-box" id="note-info">Hiện không có quá nhiều thông tin về thời kì này. Nguyên do là vì lúc này người dân lo làm ăn kiếm sống chứ chả có ai đi viết sử thư cả.</div>
         </div>
 
         <h1 class="text-3xl mb-8">2. THỜI HẬU THU HIỀN (Quốc hiệu: 6TC1)</h1>
@@ -144,10 +161,117 @@
 
         <footer class="mt-12 pt-8 border-t border-gray-300 text-sm text-gray-500 flex justify-between">
             <p>© 2026 Sử Ký TC1 - Biên soạn bởi Ngô Thừa Khang</p>
-            <p>Lớp 7TC1 - Hữu Thọ Sơn | Chỉnh sửa lần cuối 18/4/2026 8:47PM</p>
+            <p>Lớp 7TC1 - Hữu Thọ Sơn | Chỉnh sửa lần cuối 23/4/2026 8:19PM</p>
         </footer>
     </div>
+    <!--intesting-->
+    <div id="settings-trigger" class="fixed bottom-8 right-8 z-[100] group flex items-center bg-blue-600 p-3 rounded-full cursor-pointer shadow-lg hover:pr-6 transition-all duration-300" onclick="toggleSettingsMenu()">
+        <svg class="text-white animate-spin-slow" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+        <span class="max-w-0 overflow-hidden group-hover:max-w-xs group-hover:ml-3 text-white font-bold transition-all duration-500 whitespace-nowrap text-sm">Cài đặt giao diện</span>
+    </div>
 
+    <div id="settings-panel" class="fixed bottom-24 right-8 z-[100] bg-[#1a1a1a] p-6 rounded-3xl shadow-2xl border border-gray-700 hidden flex-col gap-6 min-w-[280px]">
+        <div class="grid grid-cols-4 gap-3 border-b border-gray-800 pb-6">
+            <button onclick="changeBg('#fff9db')" class="w-10 h-10 rounded-xl bg-[#fff9db] border-2 border-transparent hover:border-white transition-all shadow-lg"></button>
+            <button onclick="changeBg('#ffffff')" class="w-10 h-10 rounded-xl bg-[#ffffff] border-2 border-transparent hover:border-gray-400 transition-all shadow-lg"></button>
+            <button onclick="changeBg('#000000')" class="w-10 h-10 rounded-xl bg-[#000000] border-2 border-transparent hover:border-gray-500 transition-all shadow-lg"></button>
+            <button onclick="changeBg('#ebf8ff')" class="w-10 h-10 rounded-xl bg-[#ebf8ff] border-2 border-transparent hover:border-blue-400 transition-all shadow-lg"></button>
+        </div>
+        <div class="flex items-center justify-between">
+            <span class="text-white text-[11px] font-bold uppercase tracking-wider">Chế độ Gradient</span>
+            <label class="switch">
+                <input type="checkbox" id="gradient-toggle" onclick="toggleGradient()">
+                <span class="slider"></span>
+            </label>
+        </div>
+    </div>
+
+<script>
+    let currentBaseColor = localStorage.getItem('tc1_bg_choice') || '#ffffff';
+    let isGradient = localStorage.getItem('tc1_gradient') === 'true';
+
+    function toggleSettingsMenu() {
+        const panel = document.getElementById('settings-panel');
+        panel.classList.toggle('hidden');
+        panel.classList.toggle('flex');
+    }
+
+    function changeBg(color) {
+        currentBaseColor = color;
+        localStorage.setItem('tc1_bg_choice', color);
+        applyTheme();
+    }
+
+    function toggleGradient() {
+        isGradient = document.getElementById('gradient-toggle').checked;
+        localStorage.setItem('tc1_gradient', isGradient);
+        applyTheme();
+    }
+
+    function applyTheme() {
+        const body = document.body;
+        const container = document.getElementById('main-content');
+        const toggle = document.getElementById('gradient-toggle');
+        if (toggle) toggle.checked = isGradient;
+
+        const gradients = {
+            '#000000': 'linear-gradient(135deg, #000000 0%, #2d3748 100%)',
+            '#ebf8ff': 'linear-gradient(135deg, #2c5282 0%, #90cdf4 100%)',
+            '#fff9db': 'linear-gradient(135deg, #f6ad55 0%, #fff9db 100%)',
+            '#ffffff': 'linear-gradient(135deg, #e2e8f0 0%, #ffffff 100%)'
+        };
+
+        if (isGradient) {
+            body.style.setProperty('background', gradients[currentBaseColor] || currentBaseColor, 'important');
+        } else {
+            body.style.setProperty('background', currentBaseColor, 'important');
+        }
+
+        let isDarkTheme = false;
+        if (isGradient) {
+            if (currentBaseColor === '#000000' || currentBaseColor === '#ebf8ff') isDarkTheme = true;
+        } else {
+            if (currentBaseColor === '#000000') isDarkTheme = true;
+        }
+
+        const textColor = isDarkTheme ? '#ffffff' : '#1a202c';
+
+        if (container) {
+            if (isDarkTheme) {
+                container.style.backgroundColor = 'rgba(255, 255, 255, 0.15)'; 
+                container.style.borderColor = 'rgba(255, 255, 255, 0.2)';
+            } else {
+                container.style.backgroundColor = 'white';
+                container.style.borderColor = '#a2a9b1';
+            }
+        }
+
+        document.querySelectorAll('.dialogue-box').forEach(el => {
+            el.style.backgroundColor = isDarkTheme ? 'rgba(255,255,255,0.08)' : '#f0fff4';
+        });
+        document.querySelectorAll('.note-box').forEach(el => {
+            el.style.backgroundColor = isDarkTheme ? 'rgba(250, 176, 5, 0.15)' : '#fff9db';
+            el.style.color = isDarkTheme ? '#fab005' : '#856404';
+        });
+
+        document.querySelectorAll('h1, h2, h3, p, li, b, span, div, td, th, a').forEach(el => {
+            if(!el.closest('#settings-panel') && !el.closest('#settings-trigger')) {
+                el.style.setProperty('color', textColor, 'important');
+            }
+        });
+    }
+
+    window.onclick = function(event) {
+        const panel = document.getElementById('settings-panel');
+        const trigger = document.getElementById('settings-trigger');
+        if (panel && !panel.classList.contains('hidden') && !panel.contains(event.target) && !trigger.contains(event.target)) {
+            panel.classList.add('hidden');
+            panel.classList.remove('flex');
+        }
+    }
+
+    window.onload = applyTheme;
+</script>
 </body>
 </html>
 

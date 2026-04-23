@@ -36,8 +36,7 @@
             color: #1a202c;
         }
         .search-highlight { background-color: yellow; font-weight: bold; }
-        
-        /* Base Button Style */
+
         .khac-btn {
             display: inline-flex;
             align-items: center;
@@ -52,11 +51,114 @@
         }
         .khac-btn:hover { transform: translateX(5px); opacity: 0.9; }
         
-        /* Custom Button Colors to match sub-pages */
         .btn-coinguon { background-color: #ed8936; } /* Orange-ish */
         .btn-nhahien { background-color: #2f855a; }  /* Green-ish */
         .btn-nhatai { background-color: #3366cc; }   /* Blue-ish */
         .btn-diadiem { background-color: #718096; }  /* Grey-ish */
+
+    <!--intesting-->
+body.theme-dark { background: #1a202c !important; color: #e2e8f0 !important; }
+body.theme-dark .author-card { background: #2d3748; border-color: #4a5568; }
+body.theme-dark h2 { color: #f7fafc !important; }
+body.theme-dark p { color: #cbd5e0 !important; }
+
+body.theme-rose { background: #fff5f7 !important; }
+body.theme-rose .author-card { border-color: #feb2b2; }
+
+body.theme-ocean { background: #ebf8ff !important; }
+body.theme-ocean .author-card { border-color: #90cdf4; }
+body, div, section, aside {
+    transition: background-color 0.5s ease, border-color 0.5s ease;
+}
+
+.bg-white {
+    background-color: rgba(255, 255, 255, 0.8) !important;
+    backdrop-filter: blur(5px); 
+}
+
+.infobox {
+    background-color: rgba(248, 250, 252, 0.8) !important;
+    border: 1px solid rgba(226, 232, 240, 0.5);
+}
+body.theme-dark .author-card, 
+body.theme-dark .infobox {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5) !important;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 24px;
+}
+.switch input { opacity: 0; width: 0; height: 0; }
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: #ccc;
+  transition: .4s;
+  border-radius: 34px;
+}
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 16px; width: 16px;
+  left: 4px; bottom: 4px;
+  background-color: white;
+  transition: .4s;
+  border-radius: 50%;
+}
+input:checked + .slider { background: linear-gradient(90deg, #3366cc, #ed8936); }
+input:checked + .slider:before { transform: translateX(26px); }
+.gradient-active {
+    background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d) !important; /* Màu rực rỡ hơn */
+    background-size: 400% 400% !important;
+    animation: gradientAnimation 15s ease infinite;
+}
+
+@keyframes gradientAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.dynamic-card {
+    transition: all 0.5s ease !important;
+}
+
+.gradient-active {
+    background-attachment: fixed !important;
+    transition: all 0.8s ease;
+}
+
+.wiki-container, .infobox, .menu-box, .original-doc-btn {
+    transition: all 0.5s ease !important;
+}
+
+.original-doc-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(5px);
+}
+
+.dynamic-style {
+    transition: all 0.5s ease !important;
+    backdrop-filter: blur(10px) !important;
+}
+.original-doc-btn {
+    background: rgba(255, 255, 255, 0.1) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+}
+table, thead, tbody, tr, td, th {
+    background-color: transparent !important;
+}
+
+.gradient-active .infobox, .gradient-active .menu-box {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
     </style>
 </head>
 <body class="p-4 md:p-8">
@@ -73,7 +175,7 @@
         <p class="mb-6 italic text-gray-500">"Kinh sử này ta chép cho hậu thế, để về sau còn nhớ lấy tiền thân..."</p>
 
         <aside class="infobox rounded shadow-sm">
-            <div class="text-center font-bold text-xl bg-[#eaecf0] p-2 mb-2 border-b">VƯƠNG TRIỀU TC1</div>
+            <div class="text-center font-bold text-xl infobox-header p-2 mb-2 border-b">VƯƠNG TRIỀU TC1</div>
             <div class="p-2 text-sm">
                 <table class="w-full text-left">
                     <tr class="border-b"> <th class="py-1">Hoàng đế:</th> <td>Phạm Ngọc Tài</td> </tr>
@@ -85,7 +187,7 @@
             </div>  
         </aside>
 
-        <div class="bg-[#f8f9fa] border p-5 mb-8 inline-block rounded-md">
+        <div class="menu-box border p-5 mb-8 inline-block rounded-md">
             <h3 class="font-bold mb-3 border-b pb-1 text-blue-800">Mục lục nội dung</h3>
             <ul class="space-y-2 text-blue-600">
                 <li>1. <a href="#khac-1" class="hover:underline font-bold">I. Cội nguồn của mọi sự</a></li>
@@ -141,15 +243,15 @@
 
         <footer class="mt-12 pt-8 border-t border-gray-300 text-sm text-gray-500">
             <div class="mb-8 flex justify-center">
-                <a href="riel.html" class="group flex items-center gap-3 bg-white border border-blue-500 px-6 py-3 rounded-full text-blue-600 font-bold hover:bg-blue-500 hover:text-white transition-all shadow-sm">
+                <a href="riel.html" class="original-doc-btn group flex items-center gap-3 border border-blue-500 px-6 py-3 rounded-full text-blue-600 font-bold hover:bg-blue-500 hover:text-white transition-all shadow-sm">
                     <span>Xem và tải về tài liệu gốc =></span>
                 </a>
             </div>
             <div class="flex justify-between items-center border-t pt-6">
-                <p>Cập nhật lần cuối: 19 tháng 4, 2026 lúc 12:27PM</p>
+                <p>Cập nhật lần cuối: 23 tháng 4, 2026 lúc 8:48PM</p>
                 <img src="big.png" class="h-8 opacity-70">
             </div>
-                            <p>Phiên bản Website: v1 early public test</p>
+                            <p>Phiên bản Website: v1.1earlytest</p>
                             <p>--------------------     </p>
 
                             <p>Website hiện vẫn đang trong giai đoạn phát triển và có thể thiếu sót, nếu phát hiện lỗi hoặc sai sót, mong các vị thông cảm và phản hồi về cho ban biên soạn để được sửa đổi sớm nhất. Xin cảm ơn quý vị rất nhiều.</p>
@@ -158,26 +260,175 @@
                             <p>Và một lần nữa, xin chân thành cảm ơn sự đồng hành và hỗ trợ của quý vị đã truyền động lực giúp đội ngũ lập lên trang web này! </p>
         </footer>
         </footer>
+ 
     </div>
 
+        <!--intesting-->
     <script>
-        function searchWiki() {
-            const input = document.getElementById('search-input').value.toLowerCase();
-            const content = document.getElementById('wiki-content');
-            const paragraphs = content.querySelectorAll('p, li, td, h2, h3, b');
-            paragraphs.forEach(p => p.innerHTML = p.innerHTML.replace(/<span class="search-highlight">|<\/span>/g, ""));
-            if (input === "") return;
-            let found = false;
-            paragraphs.forEach(p => {
-                if (p.innerText.toLowerCase().includes(input)) {
-                    const regex = new RegExp(`(${input})`, 'gi');
-                    p.innerHTML = p.innerHTML.replace(regex, '<span class="search-highlight">$1</span>');
-                    if (!found) { p.scrollIntoView({ behavior: 'smooth', block: 'center' }); found = true; }
-                }
-            });
+    function searchWiki() {
+        const input = document.getElementById('search-input').value.toLowerCase();
+        const content = document.getElementById('wiki-content');
+        const paragraphs = content.querySelectorAll('p, li, td, h2, h3, b');
+        paragraphs.forEach(p => p.innerHTML = p.innerHTML.replace(/<span class="search-highlight">|<\/span>/g, ""));
+        if (input === "") return;
+        let found = false;
+        paragraphs.forEach(p => {
+            if (p.innerText.toLowerCase().includes(input)) {
+                const regex = new RegExp(`(${input})`, 'gi');
+                p.innerHTML = p.innerHTML.replace(regex, '<span class="search-highlight">$1</span>');
+                if (!found) { p.scrollIntoView({ behavior: 'smooth', block: 'center' }); found = true; }
+            }
+        });
+    }
+    document.getElementById('search-input').addEventListener('keypress', (e) => { if (e.key === 'Enter') searchWiki(); });
+
+    let currentBaseColor = localStorage.getItem('tc1_bg_choice') || '#ffffff';
+    let isGradient = localStorage.getItem('tc1_gradient') === 'true';
+
+    function changeBg(color) {
+        currentBaseColor = color;
+        localStorage.setItem('tc1_bg_choice', color);
+        applyTheme();
+    }
+
+    function toggleGradient() {
+        isGradient = document.getElementById('gradient-toggle').checked;
+        localStorage.setItem('tc1_gradient', isGradient);
+        applyTheme();
+    }
+
+    function applyTheme() {
+        const root = document.body;
+        const toggle = document.getElementById('gradient-toggle');
+        if (toggle) toggle.checked = isGradient;
+
+        const gradients = {
+            '#000000': 'linear-gradient(135deg, #000000 0%, #2d3748 100%)',
+            '#ebf8ff': 'linear-gradient(135deg, #2c5282 0%, #90cdf4 100%)',
+            '#fff9db': 'linear-gradient(135deg, #f6ad55 0%, #fff9db 100%)',
+            '#ffffff': 'linear-gradient(135deg, #e2e8f0 0%, #ffffff 100%)'
+        };
+
+        if (isGradient) {
+            root.style.setProperty('background', gradients[currentBaseColor], 'important');
+            root.style.backgroundAttachment = "fixed";
+        } else {
+            root.style.setProperty('background', currentBaseColor, 'important');
         }
-        document.getElementById('search-input').addEventListener('keypress', (e) => { if (e.key === 'Enter') searchWiki(); });
-    </script>
+
+        const isDark = (currentBaseColor === '#000000' || (isGradient && currentBaseColor === '#ebf8ff'));
+        const textColor = isDark ? '#ffffff' : '#1a202c';
+        const cardBg = isDark ? 'rgba(255, 255, 255, 0.1)' : 'rgba(255, 255, 255, 0.2)';
+
+        const allSelectors = '.wiki-container, .infobox, .menu-box, table, tr, td, th, .dynamic-style';
+        document.querySelectorAll(allSelectors).forEach(el => {
+            el.style.setProperty('background-color', isGradient ? 'transparent' : cardBg, 'important');
+            el.style.setProperty('color', textColor, 'important');
+            el.style.setProperty('border-color', isDark ? 'rgba(255,255,255,0.2)' : 'rgba(0,0,0,0.1)', 'important');
+            if (isGradient) el.style.setProperty('backdrop-filter', 'blur(10px)', 'important');
+        });
+
+        document.querySelectorAll('h1, h2, h3, p, li, b, span, a:not(.bg-blue-600)').forEach(t => {
+            t.style.setProperty('color', textColor, 'important');
+        });
+    }
+
+    window.onload = applyTheme;
+
+
+function toggleSettingsMenu() {
+    const menu = document.getElementById('settings-menu');
+    menu.classList.toggle('hidden');
+    menu.classList.toggle('flex');
+}
+
+window.addEventListener('click', function(e) {
+    const menu = document.getElementById('settings-menu');
+    const btn = document.getElementById('menu-toggle');
+    if (!menu.contains(e.target) && !btn.contains(e.target)) {
+        menu.classList.add('hidden');
+        menu.classList.remove('flex');
+    }
+}) 
+
+function toggleSettingsMenu() {
+        const panel = document.getElementById('settings-panel');
+        panel.classList.toggle('hidden');
+        panel.classList.toggle('flex');
+    }
+
+    function changeBg(color) {
+        currentBaseColor = color;
+        localStorage.setItem('tc1_bg_choice', color);
+        applyTheme();
+    }
+
+    function applyTheme() {
+        const root = document.body;
+        const toggle = document.getElementById('gradient-toggle');
+        if (toggle) toggle.checked = isGradient;
+
+        const gradients = {
+            '#000000': 'linear-gradient(135deg, #000000 0%, #2d3748 100%)',
+            '#ebf8ff': 'linear-gradient(135deg, #2c5282 0%, #90cdf4 100%)',
+            '#fff9db': 'linear-gradient(135deg, #f6ad55 0%, #fff9db 100%)',
+            '#ffffff': 'linear-gradient(135deg, #e2e8f0 0%, #ffffff 100%)'
+        };
+
+        if (isGradient) {
+            root.style.setProperty('background', gradients[currentBaseColor] || currentBaseColor, 'important');
+            root.style.backgroundAttachment = "fixed";
+        } else {
+            root.style.setProperty('background', currentBaseColor, 'important');
+        }
+        const isDark = (currentBaseColor === '#000000' || (isGradient && currentBaseColor === '#ebf8ff'));
+        const textColor = isDark ? '#ffffff' : '#1a202c';
+        
+        document.querySelectorAll('h1, h2, h3, p, li, b, span, td, th, .menu-box a').forEach(el => {
+            el.style.setProperty('color', textColor, 'important');
+        });
+
+        document.querySelectorAll('.wiki-container, .infobox, .menu-box, table, tr, td').forEach(el => {
+            el.style.setProperty('background-color', isDark ? 'rgba(255,255,255,0.05)' : 'rgba(255,255,255,0.15)', 'important');
+            el.style.setProperty('backdrop-filter', 'blur(12px)', 'important');
+            el.style.setProperty('border-color', isDark ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.05)', 'important');
+        });
+    }
+
+    window.onload = applyTheme;
+</script>
+
+
+<div id="settings-trigger" class="fixed bottom-8 right-8 z-[100] group flex items-center bg-blue-600 p-3 rounded-full cursor-pointer shadow-lg hover:pr-6 transition-all duration-300" onclick="toggleSettingsMenu()">
+    <svg class="text-white animate-spin-slow" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+    <span class="max-w-0 overflow-hidden group-hover:max-w-xs group-hover:ml-3 text-white font-bold transition-all duration-500 whitespace-nowrap">Cài đặt</span>
+</div>
+
+<div id="settings-panel" class="fixed bottom-24 right-8 z-[100] bg-[#1a1a1a] p-6 rounded-3xl shadow-2xl border border-gray-700 hidden flex-col gap-6 min-w-[280px]">
+    <div class="flex justify-between items-center">
+        <h3 class="text-white font-bold text-sm uppercase tracking-widest">Tùy chỉnh giao diện</h3>
+        <button onclick="toggleSettingsMenu()" class="text-gray-400 hover:text-white transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+    </div>
+
+    <div class="grid grid-cols-4 gap-3 border-b border-gray-800 pb-6">
+        <button onclick="changeBg('#fff9db')" class="w-10 h-10 rounded-xl bg-[#fff9db] border-2 border-transparent hover:border-white transition-all"></button>
+        <button onclick="changeBg('#ffffff')" class="w-10 h-10 rounded-xl bg-[#ffffff] border-2 border-transparent hover:border-gray-400 transition-all"></button>
+        <button onclick="changeBg('#000000')" class="w-10 h-10 rounded-xl bg-[#000000] border-2 border-transparent hover:border-gray-500 transition-all"></button>
+        <button onclick="changeBg('#ebf8ff')" class="w-10 h-10 rounded-xl bg-[#ebf8ff] border-2 border-transparent hover:border-blue-400 transition-all"></button>
+    </div>
+
+<div class="flex items-center gap-3 ml-4 border-l pl-4 border-gray-300">
+    <span class="text-xs font-bold text-gray-500 uppercase">Gradient</span>
+    <label class="switch">
+        <input type="checkbox" id="gradient-toggle" onclick="toggleGradient()">
+        <span class="slider"></span>
+    </label>
+</div>
+</div>
+
+
 </body>
 </html>
 

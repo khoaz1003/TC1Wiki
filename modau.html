@@ -9,83 +9,62 @@
     <style>
         body { 
             font-family: 'Calibri', 'Segoe UI', Candara, Arial, sans-serif; 
-            background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
             color: #e2e8f0; 
             line-height: 1.8;
             min-height: 100vh;
+            transition: background 0.5s ease;
         }
         .wiki-container { 
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
             padding: 50px; 
             margin: 30px auto; 
             max-width: 950px;
             border-radius: 15px;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+            transition: all 0.5s ease;
         }
-        h1 { 
-            border-bottom: 2px solid #ed8936; 
-            font-weight: bold; 
-            color: #f6ad55;
-            padding-bottom: 10px;
-            margin-top: 40px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            text-shadow: 0 0 10px rgba(237, 137, 54, 0.5);
-        }
-        h2 { 
-            border-bottom: 1px solid rgba(255,255,255,0.2); 
-            font-weight: bold; 
-            color: #fbd38d;
-            margin-top: 35px;
-            margin-bottom: 20px;
-            padding-bottom: 5px;
-        }
-        .content-section { 
-            margin-bottom: 40px; 
-            text-align: justify; 
-        }
-        .back-link { 
-            color: #f6ad55; 
-            text-decoration: none; 
-            font-weight: bold; 
-            display: inline-flex; 
-            align-items: center;
-            margin-bottom: 30px; 
-            transition: 0.3s;
-        }
+        h1 { border-bottom: 2px solid #ed8936; font-weight: bold; padding-bottom: 10px; margin-top: 40px; text-transform: uppercase; letter-spacing: 2px; }
+        h2 { border-bottom: 1px solid rgba(255,255,255,0.2); font-weight: bold; margin-top: 35px; margin-bottom: 20px; padding-bottom: 5px; }
+            <!--intesting-->
+        .content-section { margin-bottom: 40px; text-align: justify; }
+        .back-link { color: #f6ad55; text-decoration: none; font-weight: bold; display: inline-flex; align-items: center; margin-bottom: 30px; transition: 0.3s; }
         .back-link:hover { transform: translateX(-5px); color: #ed8936; }
         
-        .myth-box {
-            background: rgba(0, 0, 0, 0.3);
-            border-left: 4px solid #ed8936;
-            padding: 20px 30px;
-            margin: 25px 0;
-            border-radius: 0 10px 10px 0;
-            box-shadow: inset 0 0 20px rgba(0,0,0,0.2);
-        }
+        .myth-box { background: rgba(0, 0, 0, 0.2); border-left: 4px solid #ed8936; padding: 20px 30px; margin: 25px 0; border-radius: 0 10px 10px 0; }
+        .divine-quote { font-family: 'Times New Roman', serif; font-style: italic; font-size: 1.2rem; text-align: center; margin: 30px 0; padding: 20px; border-top: 1px dashed rgba(255,255,255,0.2); border-bottom: 1px dashed rgba(255,255,255,0.2); }
+        .highlight-fire { color: #f6e05e; font-weight: bold; text-shadow: 0 0 5px rgba(246, 224, 94, 0.8); }
+
+        .animate-spin-slow { animation: spin 8s linear infinite; }
+        @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+
+        .switch { position: relative; display: inline-block; width: 44px; height: 22px; }
+        .switch input { opacity: 0; width: 0; height: 0; }
+        .slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #444; transition: .4s; border-radius: 20px; }
+        .slider:before { position: absolute; content: ""; height: 16px; width: 16px; left: 3px; bottom: 3px; background-color: white; transition: .4s; border-radius: 50%; }
+        input:checked + .slider { background-color: #2563eb; }
+        input:checked + .slider:before { transform: translateX(22px); }
+        table, tr, td, th { background-color: transparent !important; }
+        
         .divine-quote {
-            font-family: 'Times New Roman', serif;
-            font-style: italic;
-            font-size: 1.2rem;
-            color: #fbd38d;
-            text-align: center;
-            margin: 30px 0;
-            padding: 20px;
-            border-top: 1px dashed rgba(255,255,255,0.2);
-            border-bottom: 1px dashed rgba(255,255,255,0.2);
-        }
-        .highlight-fire {
-            color: #f6e05e;
-            font-weight: bold;
-            text-shadow: 0 0 5px rgba(246, 224, 94, 0.8);
-        }
+    font-family: 'Times New Roman', serif;
+    font-style: italic;
+    font-size: 1.25rem;
+    text-align: center;
+    margin: 30px auto;
+    padding: 25px;
+    width: fit-content;
+    max-width: 80%;
+    border-top: 2px double rgba(237, 137, 54, 0.4);
+    border-bottom: 2px double rgba(237, 137, 54, 0.4);
+    background: rgba(237, 137, 54, 0.05);
+    transition: all 0.5s ease;
+}
+
     </style>
 </head>
 <body class="p-4 md:p-10">
 
-    <div class="wiki-container">
+    <div class="wiki-container" id="main-content">
         <a href="index.html" class="back-link">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
@@ -93,11 +72,10 @@
             Quay lại trang chủ
         </a>
 
-        <h1 class="text-4xl mb-8 text-center">CỘI NGUỒN CỦA MỌI SỰ</h1>
+        <h1 id="title-h1" class="text-4xl mb-8 text-center">CỘI NGUỒN CỦA MỌI SỰ</h1>
         
         <div class="content-section">
             <p>Theo người Hữu thọ sơn, từ thuở xa xưa, trước cả khi con người tồn tại. Xuất hiện một vị thần, xuất hiện dưới dạng một <span class="highlight-fire">ngọn lửa khởi nguyên</span>, người ta gọi vị này là <b>“ông cội”</b>.</p>
-            
             <p class="mt-6">Chừng hai thiên niên kỉ sau, từ <b>”ông cội”</b> chạy ra 1 dòng lửa. Song, dòng lửa tắt, bên trong nó hiện ra 1 cục đất sét. Thấy thế, “ông cội” tách nó thành 3 cục.</p>
 
             <div class="myth-box">
@@ -108,9 +86,7 @@
             </div>
 
             <p>Thấy chỗ lỏm quá kì cục, ông liền phán:</p>
-            <div class="divine-quote">
-                “nhìn cái chỗ đó mà lòng ta ứa gan”
-            </div>
+            <div class="divine-quote">“nhìn cái chỗ đó mà lòng ta ứa gan”</div>
 
             <p>Tức thì, nước dâng lên, đổ đầy chỗ lỏm, gọi là <b>“Biển”</b>, ông gọi cục đất thứ 2 là địa cầu. Cuối cùng, ông nặn cục nhỏ nhất lại thành một trái banh, ông gọi nó là <b>Nguyệt (trăng)</b>, để soi sáng cho ban đêm.</p>
         </div>
@@ -118,21 +94,132 @@
         <h2 class="text-2xl">Sự Sống và Giấc Ngủ Thiên Thu</h2>
         <div class="content-section">
             <p>Thấy quá cô đơn, ông lấy đất nặn ra đầy dẫy các loài động vật, cây cối trên đất liền, mỗi loài một cặp. Thấy mọi việc thật tốt lành, ông lăn ra ngủ. 2 tỷ năm sau ông liền tỉnh giấc, địa cầu bây giờ đang rất hỗn loạn, ông liền lấy đất nặn ra 2 con người và bảo họ cai quản trái đất.</p>
-            
             <p class="mt-6">Khi một thứ gì đó chết thì một lượng nhỏ sinh khí không bị tan rã, dần dần nó tích tụ lại. Sau khi ông “cội” lăn ra ngủ thì lượng sinh khí này bắt đầu thích nghi với môi trường, và dần tiến hóa thành những con thú dữ.</p>
-            
-            <p class="mt-4 italic text-orange-200">Một vài con thì lảng quảng quanh nhật, vài con quanh nguyệt, còn lại thì cũng cư ngụ ở trái đất.</p>
+            <p class="mt-4 italic">Một vài con thì lảng quảng quanh nhật, vài con quanh nguyệt, còn lại thì cũng cư ngụ ở trái đất.</p>
         </div>
 
-        <footer class="mt-12 pt-8 border-t border-gray-600 text-sm text-gray-400 flex justify-between items-center">
+        <footer class="mt-12 pt-8 border-t border-gray-600 text-sm text-gray-400 flex flex-col md:flex-row justify-between items-center gap-4">
             <p>© 2026 Sử Ký TC1 - Biên soạn bởi Ngô Thừa Khang</p>
-            <p>Lớp 7TC1 - Hữu Thọ Sơn | Chỉnh sửa lần cuối 18/4/2026 8:08PM</p>
-            <div class="flex gap-4">
-                <span class="px-3 py-1 bg-orange-900 text-orange-200 rounded-full text-xs">Thần thoại TC1</span>
-            </div>
+            <p>Lớp 7TC1 - Hữu Thọ Sơn | Chỉnh sửa lần cuối 22/4/2026 9:16PM</p>
         </footer>
     </div>
 
+    <div id="settings-trigger" class="fixed bottom-8 right-8 z-[100] group flex items-center bg-blue-600 p-3 rounded-full cursor-pointer shadow-lg hover:pr-6 transition-all duration-300" onclick="toggleSettingsMenu()">
+        <svg class="text-white animate-spin-slow" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+        <span class="max-w-0 overflow-hidden group-hover:max-w-xs group-hover:ml-3 text-white font-bold transition-all duration-500 whitespace-nowrap text-sm">Cài đặt giao diện</span>
+    </div>
+    <!--intesting-->
+    <div id="settings-panel" class="fixed bottom-24 right-8 z-[100] bg-[#1a1a1a] p-6 rounded-3xl shadow-2xl border border-gray-700 hidden flex-col gap-6 min-w-[280px]">
+        <div class="flex justify-between items-center">
+            <h3 class="text-white font-bold text-xs uppercase tracking-widest">Tùy chỉnh</h3>
+            <button onclick="toggleSettingsMenu()" class="text-gray-400 hover:text-white">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            </button>
+        </div>
+
+        <div class="grid grid-cols-4 gap-3 border-b border-gray-800 pb-6">
+            <button onclick="changeBg('#fff9db')" class="w-10 h-10 rounded-xl bg-[#fff9db] border-2 border-transparent hover:border-white transition-all shadow-lg"></button>
+            <button onclick="changeBg('#ffffff')" class="w-10 h-10 rounded-xl bg-[#ffffff] border-2 border-transparent hover:border-gray-400 transition-all shadow-lg"></button>
+            <button onclick="changeBg('#000000')" class="w-10 h-10 rounded-xl bg-[#000000] border-2 border-transparent hover:border-gray-500 transition-all shadow-lg"></button>
+            <button onclick="changeBg('#ebf8ff')" class="w-10 h-10 rounded-xl bg-[#ebf8ff] border-2 border-transparent hover:border-blue-400 transition-all shadow-lg"></button>
+        </div>
+
+        <div class="flex items-center justify-between">
+            <span class="text-white text-[11px] font-bold uppercase tracking-wider">Chế độ Gradient</span>
+            <label class="switch">
+                <input type="checkbox" id="gradient-toggle" onclick="toggleGradient()">
+                <span class="slider"></span>
+            </label>
+        </div>
+    </div>
+    <!--intesting-->
+    <script>
+        let currentBaseColor = localStorage.getItem('tc1_bg_choice') || '#000000';
+        let isGradient = localStorage.getItem('tc1_gradient') === 'true';
+
+        function toggleSettingsMenu() {
+            const panel = document.getElementById('settings-panel');
+            panel.classList.toggle('hidden');
+            panel.classList.toggle('flex');
+        }
+
+        function changeBg(color) {
+            currentBaseColor = color;
+            localStorage.setItem('tc1_bg_choice', color);
+            applyTheme();
+        }
+
+        function toggleGradient() {
+            isGradient = document.getElementById('gradient-toggle').checked;
+            localStorage.setItem('tc1_gradient', isGradient);
+            applyTheme();
+        }
+
+        function applyTheme() {
+            const root = document.body;
+            const toggle = document.getElementById('gradient-toggle');
+            if (toggle) toggle.checked = isGradient;
+
+            const gradients = {
+                '#000000': 'linear-gradient(135deg, #000000 0%, #2d3748 100%)',
+                '#ebf8ff': 'linear-gradient(135deg, #2c5282 0%, #90cdf4 100%)',
+                '#fff9db': 'linear-gradient(135deg, #f6ad55 0%, #fff9db 100%)',
+                '#ffffff': 'linear-gradient(135deg, #e2e8f0 0%, #ffffff 100%)'
+            };
+
+            // 1. Áp dụng nền
+            if (isGradient) {
+                root.style.setProperty('background', gradients[currentBaseColor] || currentBaseColor, 'important');
+                root.style.backgroundAttachment = "fixed";
+            } else {
+                root.style.setProperty('background', currentBaseColor, 'important');
+            }
+
+            // 2. Kiểm tra độ sáng để đổi màu chữ
+            const isDark = (currentBaseColor === '#000000' || (isGradient && currentBaseColor === '#ebf8ff'));
+            const textColor = isDark ? '#ffffff' : '#1a202c';
+            const cardBg = isDark ? 'rgba(255, 255, 255, 0.05)' : 'rgba(255, 255, 255, 0.8)';
+
+            // 3. Cập nhật giao diện nội dung
+            const container = document.getElementById('main-content');
+            container.style.backgroundColor = isGradient ? 'rgba(255, 255, 255, 0.1)' : cardBg;
+            container.style.backdropFilter = "blur(12px)";
+            container.style.borderColor = isDark ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.1)';
+
+            document.querySelectorAll('h1, h2, p, li, b, span, td, th').forEach(el => {
+                el.style.setProperty('color', textColor, 'important');
+            });
+            
+            // h1 đặc biệt (giữ màu cam nếu là nền tối)
+            document.getElementById('title-h1').style.color = isDark ? '#f6ad55' : '#c05621';
+        }
+
+        // Đóng menu khi bấm ra ngoài
+        window.onclick = function(event) {
+            const panel = document.getElementById('settings-panel');
+            const trigger = document.getElementById('settings-trigger');
+            if (!panel.contains(event.target) && !trigger.contains(event.target)) {
+                panel.classList.add('hidden');
+                panel.classList.remove('flex');
+            }
+
+            const isDark = (currentBaseColor === '#000000' || (isGradient && currentBaseColor === '#ebf8ff'));
+    const textColor = isDark ? '#ffffff' : '#1a202c';
+    
+    // Thêm .divine-quote vào chỗ này
+    document.querySelectorAll('h1, h2, p, li, b, span, td, th, .divine-quote').forEach(el => {
+        el.style.setProperty('color', textColor, 'important');
+        
+        // Nếu là câu trích dẫn, cho nó sáng rực lên một chút nếu ở nền tối
+        if(el.classList.contains('divine-quote') && isDark) {
+            el.style.setProperty('color', '#fbd38d', 'important'); // Màu vàng cát cho sang
+            el.style.setProperty('text-shadow', '0 0 8px rgba(251, 211, 141, 0.3)', 'important');
+        }
+    });
+        }
+
+        window.onload = applyTheme;
+    </script>
 </body>
 </html>
 
