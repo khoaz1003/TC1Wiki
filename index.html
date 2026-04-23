@@ -159,6 +159,18 @@ table, thead, tbody, tr, td, th {
     border: 1px solid rgba(255, 255, 255, 0.1) !important;
 }
 
+.animate-spin-slow { animation: spin 8s linear infinite; }
+        @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+        .switch { position: relative; display: inline-block; width: 44px; height: 22px; }
+        .switch input { opacity: 0; width: 0; height: 0; }
+        .slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #444; transition: .4s; border-radius: 20px; }
+        .slider:before { position: absolute; content: ""; height: 16px; width: 16px; left: 3px; bottom: 3px; background-color: white; transition: .4s; border-radius: 50%; }
+        input:checked + .slider { background-color: #2563eb; }
+        input:checked + .slider:before { transform: translateX(22px); }
+
+        .highlight-geo { color: #2b6cb0; font-weight: bold; }
+
     </style>
 </head>
 <body class="p-4 md:p-8">
@@ -251,7 +263,7 @@ table, thead, tbody, tr, td, th {
                 <p>Cập nhật lần cuối: 23 tháng 4, 2026 lúc 8:48PM</p>
                 <img src="big.png" class="h-8 opacity-70">
             </div>
-                            <p>Phiên bản Website: v1.1earlytest</p>
+                            <p>Phiên bản Website: v1.1earlypublic</p>
                             <p>--------------------     </p>
 
                             <p>Website hiện vẫn đang trong giai đoạn phát triển và có thể thiếu sót, nếu phát hiện lỗi hoặc sai sót, mong các vị thông cảm và phản hồi về cho ban biên soạn để được sửa đổi sớm nhất. Xin cảm ơn quý vị rất nhiều.</p>
@@ -260,8 +272,30 @@ table, thead, tbody, tr, td, th {
                             <p>Và một lần nữa, xin chân thành cảm ơn sự đồng hành và hỗ trợ của quý vị đã truyền động lực giúp đội ngũ lập lên trang web này! </p>
         </footer>
         </footer>
- 
+
     </div>
+
+
+    <div id="settings-trigger" class="fixed bottom-8 right-8 z-[100] group flex items-center bg-blue-600 p-3 rounded-full cursor-pointer shadow-lg hover:pr-6 transition-all duration-300" onclick="toggleSettingsMenu()">
+        <svg class="text-white animate-spin-slow" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+        <span class="max-w-0 overflow-hidden group-hover:max-w-xs group-hover:ml-3 text-white font-bold transition-all duration-500 whitespace-nowrap text-sm">Cài đặt giao diện</span>
+    </div>
+
+    <div id="settings-panel" class="fixed bottom-24 right-8 z-[100] bg-[#1a1a1a] p-6 rounded-3xl shadow-2xl border border-gray-700 hidden flex-col gap-6 min-w-[280px]">
+        <div class="grid grid-cols-4 gap-3 border-b border-gray-800 pb-6">
+            <button onclick="changeBg('#fff9db')" class="w-10 h-10 rounded-xl bg-[#fff9db] border-2 border-transparent hover:border-white transition-all shadow-lg"></button>
+            <button onclick="changeBg('#ffffff')" class="w-10 h-10 rounded-xl bg-[#ffffff] border-2 border-transparent hover:border-gray-400 transition-all shadow-lg"></button>
+            <button onclick="changeBg('#000000')" class="w-10 h-10 rounded-xl bg-[#000000] border-2 border-transparent hover:border-gray-500 transition-all shadow-lg"></button>
+            <button onclick="changeBg('#ebf8ff')" class="w-10 h-10 rounded-xl bg-[#ebf8ff] border-2 border-transparent hover:border-blue-400 transition-all shadow-lg"></button>
+        </div>
+        <div class="flex items-center justify-between">
+            <span class="text-white text-[11px] font-bold uppercase tracking-wider">Chế độ Gradient</span>
+            <label class="switch">
+                <input type="checkbox" id="gradient-toggle" onclick="toggleGradient()">
+                <span class="slider"></span>
+            </label>
+        </div>
+
 
         <!--intesting-->
     <script>
