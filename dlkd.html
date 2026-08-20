@@ -3,21 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Địa Lý & Kinh Đô TC1 - TC1Wiki</title>
+    <title>TC1Wiki - Địa Lý & Kinh Đô</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="icon" type="image/png" href="small.png">
     <style>
         body { 
             font-family: 'Calibri', 'Segoe UI', Candara, Arial, sans-serif; 
-            background: linear-gradient(135deg, #ece9e6 0%, #ffffff 100%);
-            color: #202122; 
             line-height: 1.8;
             min-height: 100vh;
             transition: background 0.5s ease;
+            background-attachment: fixed;
         }
         .wiki-container { 
-            background: white; 
-            border: 1px solid #a2a9b1; 
             padding: 50px; 
             margin: 30px auto; 
             max-width: 1000px;
@@ -38,6 +35,7 @@
         
         .content-section { margin-bottom: 40px; text-align: justify; }
         .back-link { color: #f6ad55; text-decoration: none; font-weight: bold; display: inline-flex; align-items: center; margin-bottom: 30px; transition: 0.3s; }
+        .back-link:hover { transform: translateX(-5px); color: #ed8936; }
         
         .myth-note {
             background: rgba(255, 250, 240, 0.1);
@@ -62,9 +60,31 @@
             transition: all 0.5s ease;
         }
 
-    <!--intesting-->
-        .animate-spin-slow { animation: spin 8s linear infinite; }
-        @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+        /* Settings Logic đồng bộ với index */
+        #settings-panel {
+            background: rgba(20, 20, 20, 0.75) !important;
+            backdrop-filter: blur(15px) saturate(150%);
+            -webkit-backdrop-filter: blur(15px) saturate(150%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        #settings-panel *, #settings-panel span, #settings-panel h2 {
+            color: #ffffff !important;
+        }
+
+        .color-option {
+            transition: all 0.3s ease;
+            border: 3px solid transparent !important;
+            cursor: pointer;
+        }
+
+        .color-option.active-color {
+            border-color: #2563eb !important;
+            transform: scale(1.1);
+            box-shadow: 0 0 12px rgba(37, 99, 235, 0.6) !important;
+        }
 
         .switch { position: relative; display: inline-block; width: 44px; height: 22px; }
         .switch input { opacity: 0; width: 0; height: 0; }
@@ -72,6 +92,9 @@
         .slider:before { position: absolute; content: ""; height: 16px; width: 16px; left: 3px; bottom: 3px; background-color: white; transition: .4s; border-radius: 50%; }
         input:checked + .slider { background-color: #2563eb; }
         input:checked + .slider:before { transform: translateX(22px); }
+
+        .animate-spin-slow { animation: spin 8s linear infinite; }
+        @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 
         .highlight-geo { color: #2b6cb0; font-weight: bold; }
     </style>
@@ -97,6 +120,10 @@
                 <li><b>Điểm bất lợi:</b> Nguồn nước khan hiếm. Toàn vùng chỉ có một chiếc giếng nằm gần kinh đô, dân gian gọi là <b>“Giếng Thần”</b> (hay theo cách nói hiện nay là máy lọc nước).</li>
             </ul>
 
+            <div class="divine-quote">
+                “nhìn cái chỗ đó mà lòng ta ứa gan”
+            </div>
+
             <div class="myth-note">
                 Xưa, Hữu thọ sơn có một cái hồ gọi là <b>Hồ thiêng</b>, vì do trời ban tặng, vậy mà không biết bằng cách nào nước trong cái hồ đó bị rút cạn, trở thành cái bồn địa trống không. Do vậy nên người ta mới có truyền thuyết về “Thất khổng lồ”.
             </div>
@@ -115,111 +142,126 @@
 
         <footer class="mt-12 pt-8 border-t border-gray-300 text-sm text-gray-500 flex justify-between">
             <p>© 2026 Sử Ký TC1 - Biên soạn bởi Ngô Thừa Khang</p>
-            <p>Lớp 7TC1 - Hữu Thọ Sơn | Chỉnh sửa lần cuối 01/5/2026 lúc 8:52PM</p>
+            <p>Lớp 7TC1 - Hữu Thọ Sơn | Chỉnh sửa lần cuối 25/4/2026 lúc 9:13PM</p>
         </footer>
     </div>
-    <!--intesting-->
+
     <div id="settings-trigger" class="fixed bottom-8 right-8 z-[100] group flex items-center bg-blue-600 p-3 rounded-full cursor-pointer shadow-lg hover:pr-6 transition-all duration-300" onclick="toggleSettingsMenu()">
         <svg class="text-white animate-spin-slow" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
-        <span class="max-w-0 overflow-hidden group-hover:max-w-xs group-hover:ml-3 text-white font-bold transition-all duration-500 whitespace-nowrap text-sm">Cài đặt giao diện</span>
+        <span class="max-w-0 overflow-hidden group-hover:max-w-xs group-hover:ml-3 text-white font-bold transition-all duration-500 whitespace-nowrap text-sm">Cài đặt trang web</span>
     </div>
 
-    <div id="settings-panel" class="fixed bottom-24 right-8 z-[100] bg-[#1a1a1a] p-6 rounded-3xl shadow-2xl border border-gray-700 hidden flex-col gap-6 min-w-[280px]">
-        <div class="grid grid-cols-4 gap-3 border-b border-gray-800 pb-6">
-            <button onclick="changeBg('#fff9db')" class="w-10 h-10 rounded-xl bg-[#fff9db] border-2 border-transparent hover:border-white transition-all shadow-lg"></button>
-            <button onclick="changeBg('#ffffff')" class="w-10 h-10 rounded-xl bg-[#ffffff] border-2 border-transparent hover:border-gray-400 transition-all shadow-lg"></button>
-            <button onclick="changeBg('#000000')" class="w-10 h-10 rounded-xl bg-[#000000] border-2 border-transparent hover:border-gray-500 transition-all shadow-lg"></button>
-            <button onclick="changeBg('#ebf8ff')" class="w-10 h-10 rounded-xl bg-[#ebf8ff] border-2 border-transparent hover:border-blue-400 transition-all shadow-lg"></button>
+    <div id="settings-panel" class="fixed bottom-24 right-8 z-[100] p-6 hidden flex-col gap-6 min-w-[280px]">
+        <div class="flex justify-between items-center mb-2">
+            <h2 class="text-xs font-black uppercase tracking-widest">Cài đặt trang web</h2>
+            <button onclick="toggleSettingsMenu()" class="hover:rotate-90 transition-transform">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
         </div>
+        
+        <div class="grid grid-cols-4 gap-3 border-b border-gray-600 pb-6">
+            <button onclick="changeBg('#fff9db', this)" class="color-option w-10 h-10 rounded-xl bg-[#fff9db]" data-color="#fff9db"></button>
+            <button onclick="changeBg('#ffffff', this)" class="color-option w-10 h-10 rounded-xl bg-[#ffffff]" data-color="#ffffff"></button>
+            <button onclick="changeBg('#000000', this)" class="color-option w-10 h-10 rounded-xl bg-[#000000]" data-color="#000000"></button>
+            <button onclick="changeBg('#ebf8ff', this)" class="color-option w-10 h-10 rounded-xl bg-[#ebf8ff]" data-color="#ebf8ff"></button>
+        </div>
+
         <div class="flex items-center justify-between">
-            <span class="text-white text-[11px] font-bold uppercase tracking-wider">Chế độ Gradient</span>
+            <span class="text-[10px] font-bold uppercase tracking-wider">Chế độ màu Gradient</span>
             <label class="switch">
                 <input type="checkbox" id="gradient-toggle" onclick="toggleGradient()">
                 <span class="slider"></span>
             </label>
         </div>
     </div>
-    <!--intesting-->
-<script>
-    let currentBaseColor = localStorage.getItem('tc1_bg_choice') || '#ffffff';
-    let isGradient = localStorage.getItem('tc1_gradient') === 'true';
 
-    function toggleSettingsMenu() {
-        const panel = document.getElementById('settings-panel');
-        panel.classList.toggle('hidden');
-        panel.classList.toggle('flex');
-    }
+    <script>
+        let currentBaseColor = localStorage.getItem('tc1_bg_choice') || '#ffffff';
+        let isGradient = localStorage.getItem('tc1_gradient') === 'true';
 
-    function changeBg(color) {
-        currentBaseColor = color;
-        localStorage.setItem('tc1_bg_choice', color);
-        applyTheme();
-    }
-
-    function toggleGradient() {
-        isGradient = document.getElementById('gradient-toggle').checked;
-        localStorage.setItem('tc1_gradient', isGradient);
-        applyTheme();
-    }
-
-    function applyTheme() {
-        const body = document.body;
-        const container = document.getElementById('main-content');
-        const toggle = document.getElementById('gradient-toggle');
-        if (toggle) toggle.checked = isGradient;
-
-        const gradients = {
-            '#000000': 'linear-gradient(135deg, #000000 0%, #2d3748 100%)',
-            '#ebf8ff': 'linear-gradient(135deg, #2c5282 0%, #90cdf4 100%)',
-            '#fff9db': 'linear-gradient(135deg, #f6ad55 0%, #fff9db 100%)',
-            '#ffffff': 'linear-gradient(135deg, #e2e8f0 0%, #ffffff 100%)'
-        };
-
-        if (isGradient) {
-            body.style.setProperty('background', gradients[currentBaseColor] || currentBaseColor, 'important');
-        } else {
-            body.style.setProperty('background', currentBaseColor, 'important');
+        function toggleSettingsMenu() {
+            const panel = document.getElementById('settings-panel');
+            panel.classList.toggle('hidden');
+            panel.classList.toggle('flex');
         }
 
-        const isDark = (currentBaseColor === '#000000' || (isGradient && currentBaseColor === '#ebf8ff'));
-        const textColor = isDark ? '#ffffff' : '#1a202c';
-
-        if (isDark) {
-            container.style.backgroundColor = 'rgba(255, 255, 255, 0.05)';
-            container.style.borderColor = 'rgba(255, 255, 255, 0.1)';
-        } else {
-            container.style.backgroundColor = 'white';
-            container.style.borderColor = '#a2a9b1';
+        function changeBg(color, element) {
+            currentBaseColor = color;
+            localStorage.setItem('tc1_bg_choice', color);
+            applyTheme();
         }
 
-        // FIX Ở ĐÂY: Thêm thẻ 'b' vào danh sách đổi màu
-document.querySelectorAll('h1, h2, h3, p, li, b, span, div, td, th, .divine-quote, .myth-note').forEach(el => {
-    el.style.setProperty('color', textColor, 'important');
-    
-    // Nếu là đoạn trích dẫn (divine-quote), có thể cho màu vàng nhạt khi ở nền tối cho đẹp
-    if(el.classList.contains('divine-quote') && isDark) {
-        el.style.setProperty('color', '#fbd38d', 'important');
-    }
-});
-        
-        const titleH1 = document.getElementById('title-h1');
-        if (titleH1) titleH1.style.color = isDark ? '#f6ad55' : '#2d3748';
-    }
-
-    window.onclick = function(event) {
-        const panel = document.getElementById('settings-panel');
-        const trigger = document.getElementById('settings-trigger');
-        if (panel && !panel.classList.contains('hidden') && !panel.contains(event.target) && !trigger.contains(event.target)) {
-            panel.classList.add('hidden');
-            panel.classList.remove('flex');
+        function toggleGradient() {
+            isGradient = document.getElementById('gradient-toggle').checked;
+            localStorage.setItem('tc1_gradient', isGradient);
+            applyTheme();
         }
-    }
 
-    window.onload = applyTheme;
-</script>
+        function applyTheme() {
+            const body = document.body;
+            const container = document.getElementById('main-content');
+            const toggle = document.getElementById('gradient-toggle');
+            if (toggle) toggle.checked = isGradient;
+
+            const gradients = {
+                '#000000': 'linear-gradient(135deg, #000000 0%, #2d3748 100%)',
+                '#ebf8ff': 'linear-gradient(135deg, #2c5282 0%, #90cdf4 100%)',
+                '#fff9db': 'linear-gradient(135deg, #f6ad55 0%, #fff9db 100%)',
+                '#ffffff': 'linear-gradient(135deg, #e2e8f0 0%, #ffffff 100%)'
+            };
+
+            if (isGradient) {
+                body.style.setProperty('background', gradients[currentBaseColor] || currentBaseColor, 'important');
+            } else {
+                body.style.setProperty('background', currentBaseColor, 'important');
+            }
+
+            const isDark = (currentBaseColor === '#000000' || (isGradient && currentBaseColor === '#ebf8ff'));
+            const textColor = isDark ? '#ffffff' : '#1a202c';
+
+            // Giao diện khung
+            container.style.backgroundColor = isDark ? 'rgba(255, 255, 255, 0.05)' : 'white';
+            container.style.backdropFilter = isDark ? "blur(12px)" : "none";
+            container.style.borderColor = isDark ? 'rgba(255, 255, 255, 0.1)' : '#a2a9b1';
+
+            // Đổi màu chữ toàn bộ (trừ settings panel)
+            document.querySelectorAll('h1, h2, h3, p, li, b, span, div, td, th, footer').forEach(el => {
+                if (!el.closest('#settings-panel')) {
+                    el.style.setProperty('color', textColor, 'important');
+                }
+            });
+
+            // Màu đặc biệt
+            const titleH1 = document.getElementById('title-h1');
+            if (titleH1) titleH1.style.color = isDark ? '#f6ad55' : '#2d3748';
+            
+            const quote = document.querySelector('.divine-quote');
+            if(quote && isDark) quote.style.setProperty('color', '#fbd38d', 'important');
+
+            updateActiveCircle();
+        }
+
+        function updateActiveCircle() {
+            document.querySelectorAll('.color-option').forEach(btn => {
+                if (btn.getAttribute('data-color') === currentBaseColor) {
+                    btn.classList.add('active-color');
+                } else {
+                    btn.classList.remove('active-color');
+                }
+            });
+        }
+
+        window.onclick = function(event) {
+            const panel = document.getElementById('settings-panel');
+            const trigger = document.getElementById('settings-trigger');
+            if (panel && !panel.classList.contains('hidden') && !panel.contains(event.target) && !trigger.contains(event.target)) {
+                toggleSettingsMenu();
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', applyTheme);
+    </script>
 </body>
 </html>
-
-
-<!-- Design and Coded by @khoaz1003 -->
-<!-- github.com/@khoaz1003 -->

@@ -3,34 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Triều đại Nhà Hiền - TC1Wiki</title>
+    <title>TC1Wiki - Nhà Hiền</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="icon" type="image/png" href="small.png">
     <style>
         body { 
             font-family: 'Calibri', 'Segoe UI', Candara, Arial, sans-serif; 
-            color: #202122; 
             line-height: 1.8;
             min-height: 100vh;
             transition: background 0.5s ease;
+            background-attachment: fixed;
         }
         .wiki-container { 
-            background: white; 
-            border: 1px solid #a2a9b1; 
             padding: 50px; 
             margin: 30px auto; 
             max-width: 950px;
             border-radius: 12px;
             box-shadow: 0 15px 35px rgba(0,0,0,0.1);
             transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            /* Thêm hiệu ứng backdrop-filter để làm mờ nền phía sau khung (kính mờ) */
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
         }
         h1 { 
             border-bottom: 2px solid #2f855a; 
             font-weight: bold; 
-            color: #1c4532;
             padding-bottom: 10px;
             margin-top: 40px;
             text-transform: uppercase;
@@ -39,7 +35,6 @@
         h2 { 
             border-bottom: 1px solid #a2a9b1; 
             font-weight: bold; 
-            color: #276749;
             margin-top: 35px;
             margin-bottom: 20px;
             padding-bottom: 5px;
@@ -60,32 +55,53 @@
         .back-link:hover { transform: translateX(-5px); color: #22543d; }
         
         .dialogue-box {
-            background: #f0fff4;
             border-left: 4px solid #2f855a;
             padding: 15px 25px;
             margin: 20px 0;
             font-style: italic;
             border-radius: 0 8px 8px 0;
-            transition: background 0.5s ease;
+            transition: all 0.5s ease;
         }
         .note-box {
-            background: #fff9db;
             border: 1px solid #fab005;
             padding: 10px 15px;
             border-radius: 6px;
             display: inline-block;
             font-weight: bold;
             margin: 10px 0;
-            transition: background 0.5s ease, color 0.5s ease;
+            transition: all 0.5s ease;
         }
         .highlight-text {
             color: #c53030;
             font-weight: bold;
         }
         h3 { font-size: 1.2rem; font-weight: bold; margin-top: 20px; }
-    <!--intesting-->
-        .animate-spin-slow { animation: spin 8s linear infinite; }
-        @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+        /* Settings UI Logic */
+        #settings-panel {
+            background: rgba(20, 20, 20, 0.75) !important;
+            backdrop-filter: blur(15px) saturate(150%);
+            -webkit-backdrop-filter: blur(15px) saturate(150%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        #settings-panel *, #settings-panel span, #settings-panel h2 {
+            color: #ffffff !important;
+        }
+
+        .color-option {
+            transition: all 0.3s ease;
+            border: 3px solid transparent !important;
+            cursor: pointer;
+        }
+
+        .color-option.active-color {
+            border-color: #2563eb !important;
+            transform: scale(1.1);
+            box-shadow: 0 0 12px rgba(37, 99, 235, 0.6) !important;
+        }
 
         .switch { position: relative; display: inline-block; width: 44px; height: 22px; }
         .switch input { opacity: 0; width: 0; height: 0; }
@@ -93,6 +109,9 @@
         .slider:before { position: absolute; content: ""; height: 16px; width: 16px; left: 3px; bottom: 3px; background-color: white; transition: .4s; border-radius: 50%; }
         input:checked + .slider { background-color: #2563eb; }
         input:checked + .slider:before { transform: translateX(22px); }
+
+        .animate-spin-slow { animation: spin 8s linear infinite; }
+        @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
     </style>
 </head>
 <body class="p-4 md:p-10">
@@ -112,9 +131,9 @@
             
             <p class="mt-4">Thời kỳ này xuất hiện nhiều nhân vật kiệt xuất. Nổi bật nhất là <b>Trọng Khương</b>, người được hậu thế mệnh danh là Lương Thế Vinh của TC1. Ông nổi tiếng với khả năng học đâu hiểu đó, là bậc thông thái bậc nhất thời bấy giờ. Bên cạnh đó cũng không thể không nhắc tới hai nhà sử quán khác cha khác mẹ là <b>Ngô Thừa Hiếu</b> và <b>Ngô Thừa Khang</b> và 2 đệ tử <b>Khoa, Trí</b>. Đây là những nhà sử học duy nhất viết về lịch sử TC1. Dù không có nhiều ghi chép về mấy người này, nhưng có thể khẳng định rằng họ đã viết nên những dòng mà hậu thế đang đọc.</p>
 
-            <p class="mt-4">Bây giờ, nhiều cư dân từ Nguyễn Thị Thập Sơn di cư tới như Bách Tùng, Đạt, Gia Huy… Theo ước tính của các nhà khảo cổ, dân số thời kỳ này dao động khoảng 35–45 người.</p>
+            <p class="mt-4">Bây giờ, nhiều cư dân từ Nguyễn Thị Thập Sơn di cư tới như Bách Tùng, Đạt, Gia Huy… Theo ước tính của các nhà khảo cổ, dân số thời kỳ này dao động khoảng 35–45 người. Bằng chứng khảo cổ duy nhất của TC1 là cái quốc hiệu này. Theo sử quán Ngô Thừa Khang thì đây rất có thể là quốc hiệu chính thức của TC1 thời nhà Hiền.</p>
             
-            <div class="note-box" id="note-info">Hiện không có quá nhiều thông tin về thời kì này. Nguyên do là vì lúc này người dân lo làm ăn kiếm sống chứ chả có ai đi viết sử thư cả.</div>
+            <div class="note-box">Hiện không có quá nhiều thông tin về thời kì này. Nguyên do là vì lúc này người dân lo làm ăn kiếm sống chứ chả có ai đi viết sử thư cả.</div>
         </div>
 
         <h1 class="text-3xl mb-8">2. THỜI HẬU THU HIỀN (Quốc hiệu: 6TC1)</h1>
@@ -136,7 +155,7 @@
 
             <p>Hai người cứ gắp qua gắp lại miếng cá, sau một lúc thì Khánh bắt đầu mất kiên nhẫn và hất luôn chén cơm của cả 2, chén cơm mà cả hai đã phải làm ngày cày đêm để không xót bụng khi ngủ. Một lúc sau, Khánh và Khoa xông thẳng lên triều đình để nhờ đại thần xét xử. Thấy hoàng đế, 2 người liền sụp xuống cúi đầu trước hoàng đế. Sau khi nghe Khánh kể xong câu chuyện thì vua liền phán ngay một câu:</p>
             
-            <div class="dialogue-box" style="border-left-color: #c53030; background: #fff5f5;">
+            <div class="dialogue-box" style="border-left-color: #c53030 !important;" id="vua-phan">
                 - Người đâu? Mang hai cái bản kiểm điểm cho hai tên này!<br>
                 - Có cái việc nhỏ nhặt này mà các ngươi cũng dám réo tên ta?
             </div>
@@ -161,24 +180,32 @@
 
         <footer class="mt-12 pt-8 border-t border-gray-300 text-sm text-gray-500 flex justify-between">
             <p>© 2026 Sử Ký TC1 - Biên soạn bởi Ngô Thừa Khang</p>
-            <p>Lớp 7TC1 - Hữu Thọ Sơn | Chỉnh sửa lần cuối 01/5/2026 8:54PM</p>
+            <p>Lớp 7TC1 - Hữu Thọ Sơn | Chỉnh sửa lần cuối 25/4/2026 9:19PM</p>
         </footer>
     </div>
-    <!--intesting-->
+
     <div id="settings-trigger" class="fixed bottom-8 right-8 z-[100] group flex items-center bg-blue-600 p-3 rounded-full cursor-pointer shadow-lg hover:pr-6 transition-all duration-300" onclick="toggleSettingsMenu()">
         <svg class="text-white animate-spin-slow" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
         <span class="max-w-0 overflow-hidden group-hover:max-w-xs group-hover:ml-3 text-white font-bold transition-all duration-500 whitespace-nowrap text-sm">Cài đặt giao diện</span>
     </div>
 
-    <div id="settings-panel" class="fixed bottom-24 right-8 z-[100] bg-[#1a1a1a] p-6 rounded-3xl shadow-2xl border border-gray-700 hidden flex-col gap-6 min-w-[280px]">
-        <div class="grid grid-cols-4 gap-3 border-b border-gray-800 pb-6">
-            <button onclick="changeBg('#fff9db')" class="w-10 h-10 rounded-xl bg-[#fff9db] border-2 border-transparent hover:border-white transition-all shadow-lg"></button>
-            <button onclick="changeBg('#ffffff')" class="w-10 h-10 rounded-xl bg-[#ffffff] border-2 border-transparent hover:border-gray-400 transition-all shadow-lg"></button>
-            <button onclick="changeBg('#000000')" class="w-10 h-10 rounded-xl bg-[#000000] border-2 border-transparent hover:border-gray-500 transition-all shadow-lg"></button>
-            <button onclick="changeBg('#ebf8ff')" class="w-10 h-10 rounded-xl bg-[#ebf8ff] border-2 border-transparent hover:border-blue-400 transition-all shadow-lg"></button>
+    <div id="settings-panel" class="fixed bottom-24 right-8 z-[100] p-6 hidden flex-col gap-6 min-w-[280px]">
+        <div class="flex justify-between items-center mb-2">
+            <h2 class="text-xs font-black uppercase tracking-widest">Cài đặt trang web</h2>
+            <button onclick="toggleSettingsMenu()" class="hover:rotate-90 transition-transform">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </div>
+        <div class="grid grid-cols-4 gap-3 border-b border-gray-700 pb-6">
+            <button onclick="changeBg('#fff9db')" class="color-option w-10 h-10 rounded-xl bg-[#fff9db]" data-color="#fff9db"></button>
+            <button onclick="changeBg('#ffffff')" class="color-option w-10 h-10 rounded-xl bg-[#ffffff]" data-color="#ffffff"></button>
+            <button onclick="changeBg('#000000')" class="color-option w-10 h-10 rounded-xl bg-[#000000]" data-color="#000000"></button>
+            <button onclick="changeBg('#ebf8ff')" class="color-option w-10 h-10 rounded-xl bg-[#ebf8ff]" data-color="#ebf8ff"></button>
         </div>
         <div class="flex items-center justify-between">
-            <span class="text-white text-[11px] font-bold uppercase tracking-wider">Chế độ Gradient</span>
+            <span class="text-[10px] font-bold uppercase tracking-wider">Chế độ Gradient</span>
             <label class="switch">
                 <input type="checkbox" id="gradient-toggle" onclick="toggleGradient()">
                 <span class="slider"></span>
@@ -227,36 +254,49 @@
             body.style.setProperty('background', currentBaseColor, 'important');
         }
 
-        let isDarkTheme = false;
-        if (isGradient) {
-            if (currentBaseColor === '#000000' || currentBaseColor === '#ebf8ff') isDarkTheme = true;
-        } else {
-            if (currentBaseColor === '#000000') isDarkTheme = true;
-        }
+        const isDark = (currentBaseColor === '#000000' || (isGradient && currentBaseColor === '#ebf8ff'));
+        const textColor = isDark ? '#ffffff' : '#1a202c';
 
-        const textColor = isDarkTheme ? '#ffffff' : '#1a202c';
+        // Khung nội dung
+        container.style.backgroundColor = isDark ? 'rgba(255, 255, 255, 0.08)' : 'white';
+        container.style.borderColor = isDark ? 'rgba(255, 255, 255, 0.15)' : '#a2a9b1';
 
-        if (container) {
-            if (isDarkTheme) {
-                container.style.backgroundColor = 'rgba(255, 255, 255, 0.15)'; 
-                container.style.borderColor = 'rgba(255, 255, 255, 0.2)';
-            } else {
-                container.style.backgroundColor = 'white';
-                container.style.borderColor = '#a2a9b1';
-            }
-        }
-
-        document.querySelectorAll('.dialogue-box').forEach(el => {
-            el.style.backgroundColor = isDarkTheme ? 'rgba(255,255,255,0.08)' : '#f0fff4';
-        });
-        document.querySelectorAll('.note-box').forEach(el => {
-            el.style.backgroundColor = isDarkTheme ? 'rgba(250, 176, 5, 0.15)' : '#fff9db';
-            el.style.color = isDarkTheme ? '#fab005' : '#856404';
-        });
-
-        document.querySelectorAll('h1, h2, h3, p, li, b, span, div, td, th, a').forEach(el => {
-            if(!el.closest('#settings-panel') && !el.closest('#settings-trigger')) {
+        // Đổi màu chữ toàn bộ (trừ settings panel)
+        document.querySelectorAll('h1, h2, h3, p, li, b, span, div, td, th, footer').forEach(el => {
+            if (!el.closest('#settings-panel')) {
                 el.style.setProperty('color', textColor, 'important');
+            }
+        });
+
+        // Màu đặc biệt cho Box
+        document.querySelectorAll('.dialogue-box').forEach(el => {
+            if (el.id === 'vua-phan') {
+                el.style.backgroundColor = isDark ? 'rgba(197, 48, 48, 0.15)' : '#fff5f5';
+                el.style.setProperty('color', isDark ? '#feb2b2' : '#c53030', 'important');
+            } else {
+                el.style.backgroundColor = isDark ? 'rgba(255, 255, 255, 0.05)' : '#f0fff4';
+            }
+        });
+        
+        document.querySelectorAll('.note-box').forEach(el => {
+            el.style.backgroundColor = isDark ? 'rgba(250, 176, 5, 0.1)' : '#fff9db';
+            el.style.setProperty('color', isDark ? '#fab005' : '#856404', 'important');
+        });
+
+        const headers = document.querySelectorAll('h1, h2');
+        headers.forEach(h => {
+            h.style.color = isDark ? (h.tagName === 'H1' ? '#48bb78' : '#68d391') : (h.tagName === 'H1' ? '#1c4532' : '#276749');
+        });
+
+        updateActiveCircle();
+    }
+
+    function updateActiveCircle() {
+        document.querySelectorAll('.color-option').forEach(btn => {
+            if (btn.getAttribute('data-color') === currentBaseColor) {
+                btn.classList.add('active-color');
+            } else {
+                btn.classList.remove('active-color');
             }
         });
     }
@@ -265,8 +305,7 @@
         const panel = document.getElementById('settings-panel');
         const trigger = document.getElementById('settings-trigger');
         if (panel && !panel.classList.contains('hidden') && !panel.contains(event.target) && !trigger.contains(event.target)) {
-            panel.classList.add('hidden');
-            panel.classList.remove('flex');
+            toggleSettingsMenu();
         }
     }
 
@@ -274,7 +313,3 @@
 </script>
 </body>
 </html>
-
-
-<!-- Design and Coded by @khoaz1003 -->
-<!-- github.com/@khoaz1003 -->
