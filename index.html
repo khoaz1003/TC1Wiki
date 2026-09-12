@@ -8,7 +8,7 @@
     <link rel="icon" type="image/png" href="small.png">
     <style>
         body { 
-            font-family: 'Calibri', 'Segoe UI', Candara, Arial, sans-serif; 
+            font-family: 'Times New Roman', Times, serif; 
             background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
             color: #202122; 
             transition: background 0.5s ease;
@@ -57,9 +57,9 @@
         .btn-coinguon { background-color: #ed8936; }
         .btn-nhahien { background-color: #2f855a; }
         .btn-nhatai { background-color: #3366cc; }
+        .btn-nhathao { background-color: #805ad5; }
         .btn-diadiem { background-color: #718096; }
 
-        /* Settings Style */
         #settings-panel {
             background: rgba(20, 20, 20, 0.7) !important;
             backdrop-filter: blur(15px) saturate(150%);
@@ -79,7 +79,6 @@
             cursor: pointer;
         }
 
-        /* Vòng xanh dương bao quanh màu đang chọn */
         .color-option.active-color {
             border-color: #2563eb !important;
             transform: scale(1.1);
@@ -108,15 +107,15 @@
     <div class="max-w-5xl mx-auto wiki-container shadow-md" id="wiki-content">
         <h1 class="text-4xl mb-4 text-black">TC1Wiki - Sử ký Toàn thư TC1</h1>
         
-        <p class="mb-6 italic text-gray-500">"Kinh sử này ta chép cho hậu thế, để về sau còn nhớ lấy tiền thân..."</p>
+        <p class="mb-6 italic text-gray-500">"TC1Wiki hay TC1 Sử Kí Toàn Thư là một dự án phi lợi nhuận nhằm ghi chép lại lịch sử và địa lý của Hữu Thọ Sơn qua các thời kì 1 cách trung thực, khách quan và toàn diện nhất."</p>
 
         <aside class="infobox rounded shadow-sm">
             <div class="text-center font-bold text-xl infobox-header p-2 mb-2 border-b">VƯƠNG TRIỀU TC1</div>
             <div class="p-2 text-sm">
                 <table class="w-full text-left">
-                    <tr class="border-b"> <th class="py-1">Hoàng đế:</th> <td>Phạm Ngọc Tài</td> </tr>
-                    <tr class="border-b"> <th class="py-1">Kinh đô:</th> <td>Hữu Thọ Sơn (Tầng 2)</td> </tr>
-                    <tr class="border-b"> <th class="py-1">Hoàng đế hiện thời:</th><td>Đang cập nhật...</td></tr>
+                    <tr class="border-b"> <th class="py-1">Triều đại hiện tại:</th> <td>Thời Tiền Thu Thảo (8TC1)</td> </tr>
+                    <tr class="border-b"> <th class="py-1">Hoàng đế:</th> <td>Vũ Ngọc Thu Thảo</td> </tr>
+                    <tr class="border-b"> <th class="py-1">Kinh đô:</th> <td>Tây Nam Hữu Thọ Sơn</td> </tr>
                 </table>
             </div>  
         </aside>
@@ -128,6 +127,7 @@
                 <li>II. <a href="#dia-ly" class="hover:underline font-bold">Địa lý - Kinh đô</a></li>
                 <li>III. <a href="#khac-2" class="hover:underline font-bold">Thời đại Nhà Hiền</a></li>
                 <li>IV. <a href="#khac-3" class="hover:underline font-bold">Triều đại Nhà Tài</a></li>
+                <li>V. <a href="#khac-4" class="hover:underline font-bold">Thời Tiền Thu Thảo (Mới)</a></li>
                 <li>(*) <a href="#nhan-vat" class="hover:underline font-bold">Danh sách anh hùng TC1</a></li>
             </ul>
         </div>
@@ -166,13 +166,21 @@
             <a href="thoinhaTai.html" class="khac-btn btn-nhatai">Xem chi tiết Nhà Tài ➔</a>
         </div>
 
+        <h2 id="khac-4" class="text-2xl mb-4 mt-12">V. Triều đại nhà Thảo (Quốc hiệu: 8TC1)</h2>
+        <div class="space-y-4 text-justify">
+            <p>Sau khi bình định cuộc biến loạn <b>Tứ Sứ Quân Phân Tranh</b>, Hoàng đế Phạm Ngọc Tài già yếu quyết định truyền ngai vàng cho tướng <b>Vũ Ngọc Thu Thảo</b>. Nhà Thảo chính thức lập quốc, đổi quốc hiệu thành <b>8TC1</b>.</p>
+            <p>Tân Hoàng đế ban lệnh dời kinh đô từ tầng 2 Hữu Thọ Sơn về khu vực <b>Tây Nam Hữu Thọ Sơn</b>, mở ra một kỷ nguyên thịnh vượng mới cho toàn thể nhân dân.</p>
+            <a href="thuthao.html" class="khac-btn btn-nhathao">Xem chi tiết Nhà Thảo ➔</a>
+        </div>
+
         <h2 id="nhan-vat" class="text-2xl mb-4 mt-12">Danh sách anh hùng TC1</h2>
         <ul class="list-disc ml-6 space-y-2 mb-10">
-            <li><b>Phạm Ngọc Tài:</b> Hoàng đế anh minh.</li>
+            <li><b>Vũ Ngọc Thu Thảo:</b> Tân Hoàng đế anh minh thời Tiền Thu Thảo.</li>
+            <li><b>Phạm Ngọc Tài:</b> Thái thượng hoàng, người đặt nền móng thịnh vượng.</li>
             <li><b>Yến Phương:</b> (Đại thần) Người chịu trách nhiệm và điều hành cả vương quốc.</li>
             <li><b>Trọng Khương:</b> Bậc trí giả thông thái (Chân mạng thiên tử).</li>
             <li><b>Quốc Anh:</b> Quan văn liêm khiết.</li>
-            <li><b>Thảo Vy:</b> Quan võ và là người đứng ra dẹp loạn tứ sứ quân phân tranh, giữ vững triều cương.</li>
+            <li><b>Thảo Vy:</b> Quan võ kiệt xuất, dẹp loạn tứ sứ quân phân tranh.</li>
         </ul>
 
         <footer class="mt-12 pt-8 border-t border-gray-300 text-sm text-gray-500">
@@ -182,18 +190,19 @@
                 </a>
             </div>
             <div class="flex justify-between items-center border-t pt-6">
-                <p>Cập nhật lần cuối: 20 tháng 8, 2026 lúc 1:34 PM</p>
-                <img src="big.png" class="h-8 opacity-70">
+                <p>Cập nhật lần cuối: 12 tháng 9 năm 2026, lúc 7:18 PM</p>
+                <img src="big.png" class="h-12 opacity-70">
             </div>
-            <p>Phiên bản Website: v1.3 EarlyPublic</p>
+            <p>© 2026 Sử Ký TC1 - Biên soạn bởi Ngô Thừa Khang</p>
+            <p>Phiên bản Website: v1.6 EarlyPublic</p>
             <p>--------------------</p>
             <p>Website hiện vẫn đang trong giai đoạn phát triển và có thể thiếu sót, nếu phát hiện lỗi hoặc sai sót, mong các vị thông cảm và phản hồi về cho ban biên soạn để được sửa đổi sớm nhất. Xin cảm ơn quý vị rất nhiều.</p>
             <p>Xin chân thành cảm ơn sự hỗ trợ của <a href="author.html" class="text-blue-600 hover:underline font-bold">ban biên tập</a></p>
-            <p>Tham gia <a href="https://discord.gg/xGRsHRgnVn" class="text-blue-600 hover:underline font-bold">Nhóm Discord</a> của TC1Wiki để trò chuyện, báo lỗi cho đội ngũ Dev để sửa lỗi sớm nhất</p>
-            <p>Và một lần nữa, xin chân thành cảm ơn sự đồng hành và hỗ trợ của quý vị đã truyền động lực giúp đội ngũ lập lên trang web này! </p>
+            <p>Và một lần nữa, xin chân thành cảm ơn sự đồng hành và hỗ trợ của quý vị đã truyền động lực giúp đội ngũ lập lên trang web này!</p>
         </footer>
     </div>
 
+    <!-- UI Settings -->
     <div id="settings-trigger" class="fixed bottom-8 right-8 z-[100] group flex items-center bg-blue-600 p-3 rounded-full cursor-pointer shadow-lg hover:pr-6 transition-all duration-300" onclick="toggleSettingsMenu()">
         <svg class="text-white animate-spin-slow" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
         <span class="max-w-0 overflow-hidden group-hover:max-w-xs group-hover:ml-3 text-white font-bold transition-all duration-500 whitespace-nowrap text-sm">Cài đặt trang web</span>
@@ -226,7 +235,6 @@
     </div>
 
     <script>
-    // Variables
     let currentBaseColor = localStorage.getItem('tc1_bg_choice') || '#ffffff';
     let isGradient = localStorage.getItem('tc1_gradient') === 'true';
 
@@ -309,8 +317,10 @@
         });
     }
 
-    // Initialize
     window.addEventListener('DOMContentLoaded', applyTheme);
     </script>
 </body>
 </html>
+
+<!-- Design and Coded by @khoaz1003 -->
+<!-- github.com/@khoaz1003 -->

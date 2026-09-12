@@ -8,7 +8,7 @@
     <link rel="icon" type="image/png" href="small.png">
     <style>
         body { 
-            font-family: 'Calibri', 'Segoe UI', Candara, Arial, sans-serif; 
+            font-family: 'Times New Roman', Times, serif; 
             line-height: 1.8;
             min-height: 100vh;
             transition: background 0.5s ease;
@@ -77,7 +77,6 @@
         }
         h3 { font-size: 1.2rem; font-weight: bold; margin-top: 20px; }
 
-        /* Settings UI Logic */
         #settings-panel {
             background: rgba(20, 20, 20, 0.75) !important;
             backdrop-filter: blur(15px) saturate(150%);
@@ -180,7 +179,7 @@
 
         <footer class="mt-12 pt-8 border-t border-gray-300 text-sm text-gray-500 flex justify-between">
             <p>© 2026 Sử Ký TC1 - Biên soạn bởi Ngô Thừa Khang</p>
-            <p>Lớp 7TC1 - Hữu Thọ Sơn | Chỉnh sửa lần cuối 25/4/2026 9:19PM</p>
+            <p>Lớp 8TC1 - Hữu Thọ Sơn | Chỉnh sửa lần cuối 12/9/2026 lúc 7:18PM<p>
         </footer>
     </div>
 
@@ -257,18 +256,15 @@
         const isDark = (currentBaseColor === '#000000' || (isGradient && currentBaseColor === '#ebf8ff'));
         const textColor = isDark ? '#ffffff' : '#1a202c';
 
-        // Khung nội dung
         container.style.backgroundColor = isDark ? 'rgba(255, 255, 255, 0.08)' : 'white';
         container.style.borderColor = isDark ? 'rgba(255, 255, 255, 0.15)' : '#a2a9b1';
 
-        // Đổi màu chữ toàn bộ (trừ settings panel)
         document.querySelectorAll('h1, h2, h3, p, li, b, span, div, td, th, footer').forEach(el => {
             if (!el.closest('#settings-panel')) {
                 el.style.setProperty('color', textColor, 'important');
             }
         });
 
-        // Màu đặc biệt cho Box
         document.querySelectorAll('.dialogue-box').forEach(el => {
             if (el.id === 'vua-phan') {
                 el.style.backgroundColor = isDark ? 'rgba(197, 48, 48, 0.15)' : '#fff5f5';
@@ -313,3 +309,6 @@
 </script>
 </body>
 </html>
+
+<!-- Design and Coded by @khoaz1003 -->
+<!-- github.com/@khoaz1003 -->

@@ -8,7 +8,7 @@
     <link rel="icon" type="image/png" href="small.png">
     <style>
         body { 
-            font-family: 'Calibri', 'Segoe UI', Candara, Arial, sans-serif; 
+            font-family: 'Times New Roman', Times, serif; 
             transition: background 0.5s ease;
             background-attachment: fixed;
             min-height: 100vh;
@@ -50,7 +50,6 @@
 
         .highlight-fire { color: #f6e05e; font-weight: bold; text-shadow: 0 0 5px rgba(246, 224, 94, 0.8); }
 
-        /* Settings Panel Logic giống Index */
         #settings-panel {
             background: rgba(20, 20, 20, 0.75) !important;
             backdrop-filter: blur(15px) saturate(150%);
@@ -124,7 +123,7 @@
 
         <footer class="mt-12 pt-8 border-t border-gray-600 text-sm text-gray-400 flex flex-col md:flex-row justify-between items-center gap-4">
             <p>© 2026 Sử Ký TC1 - Biên soạn bởi Ngô Thừa Khang</p>
-            <p>Lớp 7TC1 - Hữu Thọ Sơn | Chỉnh sửa lần cuối 25/4/2026 9:08PM</p>
+            <p>Lớp 8TC1 - Hữu Thọ Sơn | Chỉnh sửa lần cuối 12/9/2026 lúc 7:18PM</p>
         </footer>
     </div>
 
@@ -200,20 +199,16 @@
             const isDark = (currentBaseColor === '#000000' || (isGradient && currentBaseColor === '#ebf8ff'));
             const textColor = isDark ? '#ffffff' : '#1a202c';
             
-            // Đổi màu toàn bộ nội dung (trừ bảng cài đặt)
             document.querySelectorAll('h1, h2, p, li, b, span, footer').forEach(el => {
                 if (!el.closest('#settings-panel')) {
                     el.style.setProperty('color', textColor, 'important');
                 }
             });
-
-            // Giao diện khung
             const container = document.getElementById('main-content');
             container.style.backgroundColor = isDark ? 'rgba(255, 255, 255, 0.05)' : 'rgba(255, 255, 255, 0.8)';
             container.style.backdropFilter = "blur(12px)";
             container.style.borderColor = isDark ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.1)';
 
-            // Màu đặc biệt cho h1 và divine-quote
             document.getElementById('title-h1').style.color = isDark ? '#f6ad55' : '#c05621';
             const quote = document.querySelector('.divine-quote');
             if(quote) {
@@ -234,7 +229,6 @@
             });
         }
 
-        // Đóng menu khi bấm ra ngoài
         window.addEventListener('click', function(e) {
             const panel = document.getElementById('settings-panel');
             const trigger = document.getElementById('settings-trigger');
@@ -247,3 +241,6 @@
     </script>
 </body>
 </html>
+
+<!-- Design and Coded by @khoaz1003 -->
+<!-- github.com/@khoaz1003 -->
